@@ -13,5 +13,7 @@ UCLASS()
 class RPGGAME_API AMyGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+public:
+	virtual void OnActorKilled(AActor* VictimActor, AActor* Killer);
+
 };

@@ -6,16 +6,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Maps/Minimal_Default.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Maps/Minimal_Default.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPGGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/RPGGame.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/RPGGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/RPGGame.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Private/MyActionComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Private/MyGamePlayInterface.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Private/MyItemChest.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Private/MyMagicProjectile.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyAction.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyActionComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyAction_ProjectileAttack.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyAttributeComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyGamePlayInterface.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyInteractionComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyItemChest.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyMagicProjectile.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/RPGGame/Public/MyProjectileBase.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -162,6 +184,19 @@
       <workItem from="1665581143635" duration="2480000" />
       <workItem from="1665635682033" duration="5379000" />
       <workItem from="1665646145836" duration="1559000" />
+      <workItem from="1665726727064" duration="989000" />
+      <workItem from="1665735884002" duration="661000" />
+      <workItem from="1665807278645" duration="4574000" />
+      <workItem from="1666073182993" duration="2890000" />
+      <workItem from="1666586275544" duration="1179000" />
+      <workItem from="1666608428899" duration="6102000" />
+      <workItem from="1666675389367" duration="9726000" />
+      <workItem from="1666699805229" duration="4225000" />
+      <workItem from="1666765851246" duration="6332000" />
+      <workItem from="1666784768803" duration="2551000" />
+      <workItem from="1666845975449" duration="15881000" />
+      <workItem from="1666935816884" duration="13409000" />
+      <workItem from="1667019597064" duration="854000" />
     </task>
     <servers />
   </component>
