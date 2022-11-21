@@ -7,10 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionBT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionBT.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPGGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/RPGGame.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyMagicProjectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyMagicProjectile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,6 +199,10 @@
       <workItem from="1667997461770" duration="3171000" />
       <workItem from="1668661268740" duration="10421000" />
       <workItem from="1668748831641" duration="2763000" />
+      <workItem from="1668776897329" duration="1507000" />
+      <workItem from="1668836915814" duration="1979000" />
+      <workItem from="1668848873865" duration="4669000" />
+      <workItem from="1669011229716" duration="1980000" />
     </task>
     <servers />
   </component>

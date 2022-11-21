@@ -51,14 +51,15 @@ void AMyAICharacter::OnPawnSeen(APawn* Pawn)
 {
 	FString ProjRotationMsg=FString::Printf(TEXT("I See U!:"));
 	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
-	// Ignore if target already set
-	/*if (GetTargetActor() != Pawn)
+
+	// Ignore if target already set，如果不在视线之内，在蓝图中会赋给Target Actor
+	if (GetTargetActor() != Pawn)
 	{
 		SetTargetActor(Pawn);
 
 		MulticastPawnSeen();
-	}*/
-	//DrawDebugString(GetWorld(), GetActorLocation(), "PLAYER SPOTTED", nullptr, FColor::White, 0.5f, true);
+	}
+	DrawDebugString(GetWorld(), GetActorLocation(), "PLAYER SPOTTED", nullptr, FColor::White, 0.5f, true);
 }
 
 void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta)
