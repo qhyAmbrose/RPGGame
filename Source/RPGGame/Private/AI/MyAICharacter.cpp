@@ -49,8 +49,8 @@ void AMyAICharacter::PostInitializeComponents()
 
 void AMyAICharacter::OnPawnSeen(APawn* Pawn)
 {
-	FString ProjRotationMsg=FString::Printf(TEXT("I See U!:"));
-	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+	/*FString ProjRotationMsg=FString::Printf(TEXT("I See U!:"));
+	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);*/
 
 	// Ignore if target already set，如果不在视线之内，在蓝图中会赋给Target Actor
 	if (GetTargetActor() != Pawn)
