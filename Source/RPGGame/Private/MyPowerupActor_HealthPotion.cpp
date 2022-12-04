@@ -28,10 +28,18 @@ void AMyPowerupActor_HealthPotion::Interact_Implementation(APawn* InstigatorPawn
 	if (ensure(AttributeComp) && !AttributeComp->IsFullHealth())
 	{
 		//加满血
-		if (AttributeComp->ApplyHealthChange(this, AttributeComp->GetHealthMax()))
+		/*if (AttributeComp->ApplyHealthChange(this, AttributeComp->GetHealthMax()))
 		{
 			// Only activate if healed successfully
 			HideAndCooldownPowerup();
+		}*/
+		if (AMyPlayerState* PS = InstigatorPawn->GetPlayerState<AMyPlayerState>())
+		{
+			if (PS->RemoveCredits(CreditCost) && AttributeComp->ApplyHealthChange(this, AttributeComp->GetHealthMax()))
+			{
+				// Only activate if healed successfully
+				HideAndCooldownPowerup();
+			}
 		}
 	}
 }

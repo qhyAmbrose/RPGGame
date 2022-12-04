@@ -7,10 +7,11 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonMinions/Characters/Minions/Down_Minions/Animations/Ranged/Blendspaces/IdleToRun_A_Combat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ParagonMinions/Characters/Minions/Down_Minions/Animations/Ranged/Blendspaces/IdleToRun_A_Combat.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor_HealthPotion.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor_HealthPotion.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +203,9 @@
       <workItem from="1668776897329" duration="1507000" />
       <workItem from="1668836915814" duration="1979000" />
       <workItem from="1668848873865" duration="4669000" />
-      <workItem from="1669011229716" duration="10760000" />
+      <workItem from="1669011229716" duration="12763000" />
+      <workItem from="1669097552708" duration="10289000" />
+      <workItem from="1669726249896" duration="1214000" />
     </task>
     <servers />
   </component>
