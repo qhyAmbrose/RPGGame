@@ -22,7 +22,7 @@ void UMyAction_ProjectileAttack::StartAction_Implementation(AActor* Instigator)
 	ACharacter* Character = Cast<ACharacter>(Instigator);
 	if (Character)
 	{
-		Character->PlayAnimMontage(AttackAnim);
+		//Character->PlayAnimMontage(AttackAnim);
 
 		UGameplayStatics::SpawnEmitterAttached(CastingEffect, Character->GetMesh(), HandSocketName, FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::SnapToTarget);
 

@@ -7,11 +7,22 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Action/Action_MagicProjectile.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor_HealthPotion.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor_HealthPotion.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Monsters/DA_Monster.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Monsters/DA_Monster.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Proj_MagicProjectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Proj_MagicProjectile.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Proj_MagicProjectileAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Proj_MagicProjectileAI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyActionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyActionComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyAction_ProjectileAttack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyAction_ProjectileAttack.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyProjectileBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyProjectileBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyProjectileBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +217,12 @@
       <workItem from="1669011229716" duration="12763000" />
       <workItem from="1669097552708" duration="10289000" />
       <workItem from="1669726249896" duration="1214000" />
+      <workItem from="1670217943614" duration="499000" />
+      <workItem from="1671359995930" duration="131000" />
+      <workItem from="1671967573843" duration="594000" />
+      <workItem from="1675682011374" duration="1068000" />
+      <workItem from="1676262803515" duration="9774000" />
+      <workItem from="1676347918118" duration="11822000" />
     </task>
     <servers />
   </component>

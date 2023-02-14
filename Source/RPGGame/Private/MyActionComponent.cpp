@@ -133,7 +133,7 @@ bool UMyActionComponent::StartActionByName(AActor* Instigator, FName ActionName)
 				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FailedMsg);
 				continue;
 			}
-
+			
 			// Is Client?
 			if (!GetOwner()->HasAuthority())
 			{

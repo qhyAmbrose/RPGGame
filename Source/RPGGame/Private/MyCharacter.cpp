@@ -41,6 +41,14 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("PrimaryInteract",IE_Pressed,this,&AMyCharacter::PrimaryInteract);
 
 	PlayerInputComponent->BindAction("PrimaryAttack",IE_Pressed,this,&AMyCharacter::PrimaryAttack);
+	PlayerInputComponent->BindAction("SecondaryAttack",IE_Pressed,this,&AMyCharacter::BlackHoleAttack);
+	PlayerInputComponent->BindAction("Skill01",IE_Pressed,this,&AMyCharacter::Skill_01Start);
+	PlayerInputComponent->BindAction("Skill01",IE_Released,this,&AMyCharacter::Skill_01Stop);
+
+	PlayerInputComponent->BindAction("Sprint",IE_Pressed,this,&AMyCharacter::SprintStart);
+	PlayerInputComponent->BindAction("Sprint",IE_Released,this,&AMyCharacter::SprintStop);
+	PlayerInputComponent->BindAction("Dash",IE_Pressed,this,&AMyCharacter::Dash);
+	
 }
 
 
@@ -70,10 +78,12 @@ void AMyCharacter::MoveRight(float Value)
 
 void AMyCharacter::SprintStart()
 {
+	ActionComp->StartActionByName(this,"Sprint");
 }
 
 void AMyCharacter::SprintStop()
 {
+	ActionComp->StopActionByName(this,"Sprint");
 }
 
 void AMyCharacter::PrimaryAttack()
@@ -83,18 +93,22 @@ void AMyCharacter::PrimaryAttack()
 
 void AMyCharacter::BlackHoleAttack()
 {
+	ActionComp->StartActionByName(this,"Blackhole");
 }
 
 void AMyCharacter::Skill_01Start()
 {
+	ActionComp->StartActionByName(this,"Skill01");
 }
 
 void AMyCharacter::Skill_01Stop()
 {
+	ActionComp->StopActionByName(this,"Skill01");
 }
 
 void AMyCharacter::Dash()
 {
+	ActionComp->StartActionByName(this,"Dash");
 }
 
 void AMyCharacter::PrimaryInteract()

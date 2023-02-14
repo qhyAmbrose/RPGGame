@@ -31,6 +31,8 @@ AMyProjectileBase::AMyProjectileBase()
 	ImpactShakeInnerRadius = 0.0f;
 	ImpactShakeOuterRadius = 1500.0f;
 
+	SetReplicates(true);
+
 }
 
 void AMyProjectileBase::OnActorHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
@@ -54,7 +56,11 @@ void AMyProjectileBase::Explode_Implementation()
 		Destroy();
 }
 
-
+void AMyProjectileBase::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	//SphereComp->IgnoreActorWhenMoving(GetInstigator(), true);
+}
 
 
 

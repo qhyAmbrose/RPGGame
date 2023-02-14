@@ -36,8 +36,7 @@ public:
 	TSubclassOf<AActor> MonsterClass;
 
 	/* Relative chance to pick this monster */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float Weight;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)	float Weight;
 
 	/* Points required by gamemode to spawn this unit. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)

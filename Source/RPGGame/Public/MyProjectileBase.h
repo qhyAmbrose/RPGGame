@@ -51,4 +51,6 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void Explode();
+
+	void PostInitializeComponents();
 };
