@@ -85,7 +85,7 @@ void UMyAction_Skill01::DecalDelay_Elapsed(ACharacter* InstigatorCharacter)
 	FRotator DecalRotation=FRotator::ZeroRotator;
 	DecalRotation.Pitch=-90;
 	UGameplayStatics::SpawnDecalAtLocation(this,DecalMaterial, DecalSize, DecalLocation, DecalRotation,DecalLifeSpan);
-	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,DecalLocation.ToString());
+	//GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,DecalLocation.ToString());
 }
 
 //先在技能指示器上生成魔法阵特效
@@ -138,7 +138,6 @@ FVector UMyAction_Skill01::GetDecalPosition(ACharacter* InstigatorCharacter)
 	FCollisionObjectQueryParams ObjParams;
 	ObjParams.AddObjectTypesToQuery(ECC_WorldDynamic);
 	ObjParams.AddObjectTypesToQuery(ECC_WorldStatic);
-	ObjParams.AddObjectTypesToQuery(ECC_Pawn);
 	FHitResult Hit;
 	if(GetWorld()->LineTraceSingleByObjectType(Hit,TraceStart,TraceEnd,ObjParams))
 	{
