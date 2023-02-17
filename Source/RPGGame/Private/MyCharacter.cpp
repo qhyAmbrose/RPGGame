@@ -134,10 +134,11 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 		GetMesh()->SetScalarParameterValueOnMaterials(TimeToHitParamName, GetWorld()->TimeSeconds);
 
 		//防止重复生成
-		if(ActiveHealthBar==nullptr)
+		/*if(ActiveHealthBar==nullptr)
 		{
 			FString ProjRotationMsg=FString::Printf(TEXT("ProjRotationMsg:"));
 			GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+			
 			//生成血条组件并显示
 			ActiveHealthBar=CreateWidget<UMyWorldUserWidget>(GetWorld(),HealthBarWidget);
 			if(ActiveHealthBar)
@@ -146,7 +147,7 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 				ActiveHealthBar->AttachedActor=this;
 				ActiveHealthBar->AddToViewport();
 			}
-		}
+		}*/
 	}
 
 	// Died

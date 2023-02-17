@@ -66,10 +66,10 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 {
 	if (Delta < 0.0f)
 	{
-		/*if (InstigatorActor != this)
+		if (InstigatorActor != this)
 		{
 			SetTargetActor(InstigatorActor);
-		}*/
+		}
 
 		//AI受到攻击时显示血条
 		if (ActiveHealthBar == nullptr)

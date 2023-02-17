@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -42,8 +42,8 @@ protected:
 
 	UMyWorldUserWidget* ActiveHealthBar;
 	
-	UPROPERTY(EditDefaultsOnly,Category="UI")
-	TSubclassOf<UMyWorldUserWidget> HealthBarWidget;
+	/*UPROPERTY(EditDefaultsOnly,Category="UI")
+	TSubclassOf<UMyWorldUserWidget> HealthBarWidget;*/
 	
 
 	void MoveForward(float Value);
