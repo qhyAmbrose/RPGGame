@@ -38,6 +38,22 @@ AMyGameModeBase::AMyGameModeBase()
 	SlotName = "SaveGame01";
 }
 
+void AMyGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+
+	FString SelectedSaveSlot = UGameplayStatics::ParseOption(Options, "SaveGame");
+	if (SelectedSaveSlot.Len() > 0)
+	{
+		SlotName = SelectedSaveSlot;
+	}
+
+	LoadSaveGame();
+}
+
+
+
+
 void AMyGameModeBase::StartPlay()
 {
 	Super::StartPlay();
@@ -55,6 +71,25 @@ void AMyGameModeBase::StartPlay()
 		{
 			QueryInstance->GetOnQueryFinishedEvent().AddDynamic(this, &AMyGameModeBase::OnPowerupSpawnQueryCompleted);
 		}
+	}
+}
+
+void AMyGameModeBase::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
+{
+	// Calling Before Super:: so we set variables before 'beginplayingstate' is called in PlayerController (which is where we instantiate UI)
+	AMyPlayerState* PS = NewPlayer->GetPlayerState<AMyPlayerState>();
+	if (ensure(PS))
+	{
+		PS->LoadPlayerState(CurrentSaveGame);
+	}
+
+	Super::HandleStartingNewPlayer_Implementation(NewPlayer);
+
+	// Now we're ready to override spawn location
+	// Alternatively we could override core spawn location to use store locations immediately (skipping the whole 'find player start' logic)
+	if (PS)
+	{
+		PS->OverrideSpawnTransform(CurrentSaveGame);
 	}
 }
 
@@ -336,5 +371,107 @@ void AMyGameModeBase::OnActorKilled(AActor* VictimActor, AActor* Killer)
 	}
 }
 
+void AMyGameModeBase::WriteSaveGame()
+{
+	// Clear arrays, may contain data from previously loaded SaveGame
+	CurrentSaveGame->SavedPlayers.Empty();
+	CurrentSaveGame->SavedActors.Empty();
+	
+	// Iterate all player states, we don't have proper ID to match yet (requires Steam or EOS)
+	for (int32 i = 0; i < GameState->PlayerArray.Num(); i++)
+	{
+		AMyPlayerState* PS = Cast<AMyPlayerState>(GameState->PlayerArray[i]);
+		if (PS)
+		{
+			PS->SavePlayerState(CurrentSaveGame);
+			break; // single player only at this point
+		}
+	}
+
+	// Iterate the entire world of actors
+	for (FActorIterator It(GetWorld()); It; ++It)
+	{
+		AActor* Actor = *It;
+		// Only interested in our 'gameplay actors', skip actors that are being destroyed
+		// Note: You might instead use a dedicated SavableObject interface for Actors you want to save instead of re-using GameplayInterface
+		if (Actor->IsPendingKill() || !Actor->Implements<UMyGamePlayInterface>())
+		{
+			continue;
+		}
+
+		FActorSaveData ActorData;
+		ActorData.ActorName = Actor->GetFName();
+		ActorData.Transform = Actor->GetActorTransform();
+		
+		// Pass the array to fill with data from Actor
+		FMemoryWriter MemWriter(ActorData.ByteData);
+
+		FObjectAndNameAsStringProxyArchive Ar(MemWriter, true);
+		// Find only variables with UPROPERTY(SaveGame)
+		Ar.ArIsSaveGame = true;
+		// Converts Actor's SaveGame UPROPERTIES into binary array
+		Actor->Serialize(Ar);
+
+		CurrentSaveGame->SavedActors.Add(ActorData);
+	}
+
+	UGameplayStatics::SaveGameToSlot(CurrentSaveGame, SlotName, 0);
+
+	OnSaveGameWritten.Broadcast(CurrentSaveGame);
+}
+
+void AMyGameModeBase::LoadSaveGame()
+{
+	if (UGameplayStatics::DoesSaveGameExist(SlotName, 0))
+	{
+		CurrentSaveGame = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
+		if (CurrentSaveGame == nullptr)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Failed to load SaveGame Data."));
+			return;
+		}
+
+		UE_LOG(LogTemp, Log, TEXT("Loaded SaveGame Data."));
+
+
+		// Iterate the entire world of actors
+		for (FActorIterator It(GetWorld()); It; ++It)
+		{
+			AActor* Actor = *It;
+			// Only interested in our 'gameplay actors'
+			if (!Actor->Implements<UMyGamePlayInterface>())
+			{
+				continue;
+			}
+
+			for (FActorSaveData ActorData : CurrentSaveGame->SavedActors)
+			{
+				if (ActorData.ActorName == Actor->GetFName())
+				{
+					Actor->SetActorTransform(ActorData.Transform);
+
+					FMemoryReader MemReader(ActorData.ByteData);
+
+					FObjectAndNameAsStringProxyArchive Ar(MemReader, true);
+					Ar.ArIsSaveGame = true;
+					// Convert binary array back into actor's variables
+					Actor->Serialize(Ar);
+
+					IMyGamePlayInterface::Execute_OnActorLoaded(Actor);
+
+					break;
+				}
+			}
+		}
+
+		OnSaveGameLoaded.Broadcast(CurrentSaveGame);
+	}
+	else
+	{
+		CurrentSaveGame = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
+
+		UE_LOG(LogTemp, Log, TEXT("Created New SaveGame Data."));
+	}
+}
 
 

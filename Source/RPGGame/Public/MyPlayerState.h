@@ -3,12 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MySaveGame.h"
 #include "GameFramework/PlayerState.h"
 #include "MyPlayerState.generated.h"
 // Event Handler for Credits
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnCreditsChanged, AMyPlayerState*, PlayerState, int32, NewCredits, int32, Delta);
 // Event Handler for Personal Record Time
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnRecordTimeChanged, AMyPlayerState*, PlayerState, float, NewTime, float, OldRecord);
+
+class USSaveGame;
+
 /**
  * 
  */
@@ -19,7 +23,7 @@ class RPGGAME_API AMyPlayerState : public APlayerState
 protected:
 
 	UPROPERTY(EditDefaultsOnly, ReplicatedUsing="OnRep_Credits", Category = "Credits")
-	int32 Credits=50.0f;
+	int32 Credits;
 
 	UPROPERTY(BlueprintReadOnly)
 	float PersonalRecordTime;
@@ -34,6 +38,9 @@ protected:
 
 	public:
 
+	UFUNCTION(BlueprintCallable)
+	bool OverrideSpawnTransform(UMySaveGame* SaveObject);
+	
 	/* Checks current record and only sets if better time was passed in. */
 	UFUNCTION(BlueprintCallable)
 	bool UpdatePersonalRecord(float NewTime);
@@ -53,5 +60,9 @@ protected:
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnRecordTimeChanged OnRecordTimeChanged;
 
-	
+	UFUNCTION(BlueprintNativeEvent)
+	void SavePlayerState(UMySaveGame* SaveObject);
+
+	UFUNCTION(BlueprintNativeEvent)
+	void LoadPlayerState(UMySaveGame* SaveObject);
 };

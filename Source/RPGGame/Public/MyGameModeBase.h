@@ -136,16 +136,16 @@ public:
 
 	AMyGameModeBase();
 
-	/*void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;*/
+	void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	
 	virtual void StartPlay() override;
 
-	/*void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;*/
+	void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;
 	
 	UFUNCTION(Exec)
 	void KillAll();
 
-	/*UFUNCTION(BlueprintCallable, Category = "SaveGame")
+	UFUNCTION(BlueprintCallable, Category = "SaveGame")
 	void WriteSaveGame();
 
 	void LoadSaveGame();
@@ -154,5 +154,5 @@ public:
 	FOnSaveGameSignature OnSaveGameLoaded;
 
 	UPROPERTY(BlueprintAssignable)
-	FOnSaveGameSignature OnSaveGameWritten;*/
+	FOnSaveGameSignature OnSaveGameWritten;
 };
