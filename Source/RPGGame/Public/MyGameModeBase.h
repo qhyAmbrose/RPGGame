@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "MyPrimaryDataAsset_Monster.h"
+#include "MySaveGame.h"
 #include "AI/MyAICharacter.h"
 #include "Engine/DataTable.h"
 #include "EnvironmentQuery/EnvQueryTypes.h"
@@ -13,6 +14,9 @@
 class UEnvQueryInstanceBlueprintWrapper;
 class UEnvQuery;
 class UDataTable;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSaveGameSignature, class UMySaveGame*, SaveObject);
+
 /* DataTable Row for spawning monsters in game mode  */
 USTRUCT(BlueprintType)
 struct FMonsterInfoRow : public FTableRowBase
@@ -32,11 +36,12 @@ public:
 	/*UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	UMyPrimaryDataAsset_Monster* MonsterData;*/
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TSubclassOf<AActor> MonsterClass;
+	/*UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TSubclassOf<AActor> MonsterClass;*/
 
 	/* Relative chance to pick this monster */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)	float Weight;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float Weight;
 
 	/* Points required by gamemode to spawn this unit. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -55,11 +60,15 @@ class RPGGAME_API AMyGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 protected:
-	UPROPERTY(EditAnywhere,Category="AI")
-	TSubclassOf<AMyAICharacter> MinionClass;
+	/*UPROPERTY(EditAnywhere,Category="AI")
+	TSubclassOf<AMyAICharacter> MinionClass;*/
+	
 	/* Name of slot to save/load to disk. Can be overriden via InitGame() Options-string */
 	FString SlotName;
 
+	UPROPERTY()
+	UMySaveGame* CurrentSaveGame;
+	
 	/* All available monsters */
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 	UDataTable* MonsterTable;
@@ -105,6 +114,8 @@ protected:
 	UFUNCTION()
 	void OnBotSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper* QueryInstance, EEnvQueryStatus::Type QueryStatus);
 
+	void OnMonsterLoaded(FPrimaryAssetId LoadedId, FVector SpawnLocation);
+
 	UFUNCTION()
 	void OnPowerupSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper* QueryInstance, EEnvQueryStatus::Type QueryStatus);
 
@@ -125,10 +136,23 @@ public:
 
 	AMyGameModeBase();
 
-
+	/*void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;*/
+	
 	virtual void StartPlay() override;
 
-
+	/*void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;*/
+	
 	UFUNCTION(Exec)
 	void KillAll();
+
+	/*UFUNCTION(BlueprintCallable, Category = "SaveGame")
+	void WriteSaveGame();
+
+	void LoadSaveGame();
+
+	UPROPERTY(BlueprintAssignable)
+	FOnSaveGameSignature OnSaveGameLoaded;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnSaveGameSignature OnSaveGameWritten;*/
 };

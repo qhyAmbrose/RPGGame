@@ -17,6 +17,7 @@
 #include "Serialization/ObjectAndNameAsStringProxyArchive.h"
 #include "../RPGGame.h"
 #include "MyActionComponent.h"
+
 #include "Engine/AssetManager.h"
 
 
@@ -92,7 +93,7 @@ void AMyGameModeBase::SpawnBotTimerElapsed()
 		return;
 	}
 
-	//LogOnScreen(this, FString::Printf(TEXT("Available SpawnCredits: %f"), AvailableSpawnCredit));
+	LogOnScreen(this, FString::Printf(TEXT("Available SpawnCredits: %f"), AvailableSpawnCredit));
 
 	// Count alive bots before spawning
 	int32 NrOfAliveBots = 0;
@@ -175,9 +176,10 @@ void AMyGameModeBase::OnBotSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper
 		UE_LOG(LogTemp, Warning, TEXT("Spawn bot EQS Query Failed!"));
 		return;
 	}
-
+	UE_LOG(LogTemp, Warning, TEXT("Spawn bot EQS Query Suceeded!"));
+	
 	TArray<FVector> Locations = QueryInstance->GetResultsAsLocations();
-	/*if (Locations.IsValidIndex(0) && MonsterTable)
+	if (Locations.IsValidIndex(0) && MonsterTable)
 	{	
 		if (UAssetManager* Manager = UAssetManager::GetIfValid())
 		{
@@ -190,13 +192,37 @@ void AMyGameModeBase::OnBotSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper
 			FStreamableDelegate Delegate = FStreamableDelegate::CreateUObject(this, &AMyGameModeBase::OnMonsterLoaded, MonsterId, Locations[0]);
 			Manager->LoadPrimaryAsset(MonsterId, Bundles, Delegate);
 		}	
-	}*/
-	if (Locations.IsValidIndex(0))
-	{
-		GetWorld()->SpawnActor<AActor>(MinionClass,Locations[0],FRotator::ZeroRotator);
 	}
 }
 
+void AMyGameModeBase::OnMonsterLoaded(FPrimaryAssetId LoadedId, FVector SpawnLocation)
+{
+	LogOnScreen(this, "Finished loading.", FColor::Green);
+
+	UAssetManager* Manager = UAssetManager::GetIfValid();
+	if (Manager)
+	{
+		UMyPrimaryDataAsset_Monster* MonsterData = Cast<UMyPrimaryDataAsset_Monster>(Manager->GetPrimaryAssetObject(LoadedId));
+		if (MonsterData)
+		{
+			AActor* NewBot = GetWorld()->SpawnActor<AActor>(MonsterData->MonsterClass, SpawnLocation, FRotator::ZeroRotator);
+			if (NewBot)
+			{
+				LogOnScreen(this, FString::Printf(TEXT("Spawned enemy: %s (%s)"), *GetNameSafe(NewBot), *GetNameSafe(MonsterData)));
+
+				// Grant special actions, buffs etc.
+				UMyActionComponent* ActionComp = Cast<UMyActionComponent>(NewBot->GetComponentByClass(UMyActionComponent::StaticClass()));
+				if (ActionComp)
+				{
+					for (TSubclassOf<UMyAction> ActionClass : MonsterData->Actions)
+					{
+						ActionComp->AddAction(NewBot, ActionClass);
+					}
+				}
+			}
+		}
+	}
+}
 
 void AMyGameModeBase::OnPowerupSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper* QueryInstance, EEnvQueryStatus::Type QueryStatus)
 {

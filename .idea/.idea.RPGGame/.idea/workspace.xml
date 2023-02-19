@@ -7,7 +7,13 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Monsters/DA_Monster.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Monsters/DA_Monster.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Monsters/DT_Monsters.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Monsters/DT_Monsters.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/RPGGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/RPGGame.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +217,8 @@
       <workItem from="1676347918118" duration="13327000" />
       <workItem from="1676433556768" duration="6124000" />
       <workItem from="1676532881919" duration="6974000" />
-      <workItem from="1676612207498" duration="6265000" />
+      <workItem from="1676612207498" duration="6988000" />
+      <workItem from="1676781954954" duration="8754000" />
     </task>
     <servers />
   </component>
