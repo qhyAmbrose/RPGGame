@@ -7,13 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerControllerBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerControllerBP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/UI/NotificationContainer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/UI/NotificationContainer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/UI/MinionHealth_Widget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/UI/MinionHealth_Widget.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyPlayerState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyPlayerState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGamePlayInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGamePlayInterface.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyPlayerState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyPlayerState.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +216,8 @@
       <workItem from="1676532881919" duration="6974000" />
       <workItem from="1676612207498" duration="6988000" />
       <workItem from="1676781954954" duration="9346000" />
-      <workItem from="1676807310947" duration="2327000" />
+      <workItem from="1676807310947" duration="2865000" />
+      <workItem from="1676871983531" duration="4640000" />
     </task>
     <servers />
   </component>

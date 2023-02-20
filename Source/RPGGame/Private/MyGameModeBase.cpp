@@ -223,6 +223,7 @@ void AMyGameModeBase::OnBotSpawnQueryCompleted(UEnvQueryInstanceBlueprintWrapper
 
 			FPrimaryAssetId MonsterId = SelectedMonsterRow->MonsterId;
 
+			//加载资源（生成Minion）
 			TArray<FName> Bundles;
 			FStreamableDelegate Delegate = FStreamableDelegate::CreateUObject(this, &AMyGameModeBase::OnMonsterLoaded, MonsterId, Locations[0]);
 			Manager->LoadPrimaryAsset(MonsterId, Bundles, Delegate);
@@ -273,6 +274,7 @@ void AMyGameModeBase::OnPowerupSpawnQueryCompleted(UEnvQueryInstanceBlueprintWra
 	TArray<FVector> UsedLocations;
 
 	int32 SpawnCounter = 0;
+	
 	// Break out if we reached the desired count or if we have no more potential positions remaining
 	while (SpawnCounter < DesiredPowerupCount && Locations.Num() > 0)
 	{
@@ -438,6 +440,7 @@ void AMyGameModeBase::LoadSaveGame()
 		for (FActorIterator It(GetWorld()); It; ++It)
 		{
 			AActor* Actor = *It;
+			
 			// Only interested in our 'gameplay actors'
 			if (!Actor->Implements<UMyGamePlayInterface>())
 			{
@@ -473,5 +476,5 @@ void AMyGameModeBase::LoadSaveGame()
 		UE_LOG(LogTemp, Log, TEXT("Created New SaveGame Data."));
 	}
 }
-
+ 
 
