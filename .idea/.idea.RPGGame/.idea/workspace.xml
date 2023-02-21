@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyPowerupActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +215,8 @@
       <workItem from="1676781954954" duration="9346000" />
       <workItem from="1676807310947" duration="2865000" />
       <workItem from="1676871983531" duration="6195000" />
-      <workItem from="1676957030203" duration="1088000" />
+      <workItem from="1676957030203" duration="2672000" />
+      <workItem from="1676963442442" duration="781000" />
     </task>
     <servers />
   </component>
