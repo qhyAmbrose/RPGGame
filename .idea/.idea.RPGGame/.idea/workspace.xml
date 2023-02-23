@@ -6,20 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_MagicProjectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_MagicProjectile.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaLeftHook_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaLeftJab_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaLowRightThaiKick_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaObliqueKick_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaRightCross_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaRightUppercut_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaSpinningBackfist_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/NinjaWheelKick_Retargeted.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/PlayerAnimBP01.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyAction_ProjectileAttack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyAction_ProjectileAttack.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Blackhole.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Blackhole.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Skill01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Skill01.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +224,7 @@
       <workItem from="1676965402432" duration="2704000" />
       <workItem from="1676982151130" duration="630000" />
       <workItem from="1677049709667" duration="1545000" />
-      <workItem from="1677127270967" duration="2813000" />
+      <workItem from="1677127270967" duration="3390000" />
     </task>
     <servers />
   </component>
