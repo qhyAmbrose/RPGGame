@@ -7,7 +7,11 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Query_FindPowerupSpawns.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Query_FindPowerupSpawns.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +37,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
   <component name="ProjectId" id="2FytrhoKavLj68H12oyYs3UmCLX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,7 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -217,6 +224,11 @@
       <workItem from="1676871983531" duration="6195000" />
       <workItem from="1676957030203" duration="2672000" />
       <workItem from="1676963442442" duration="781000" />
+      <workItem from="1676964671123" duration="578000" />
+      <workItem from="1676965402432" duration="2704000" />
+      <workItem from="1676982151130" duration="630000" />
+      <workItem from="1677049709667" duration="1545000" />
+      <workItem from="1677127270967" duration="1051000" />
     </task>
     <servers />
   </component>
@@ -238,5 +250,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
