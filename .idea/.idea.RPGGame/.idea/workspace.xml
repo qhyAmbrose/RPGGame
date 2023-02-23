@@ -6,8 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Blackhole.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Blackhole.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Skill01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Skill01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Dash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_Dash.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP01.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +225,7 @@
       <workItem from="1676965402432" duration="2704000" />
       <workItem from="1676982151130" duration="630000" />
       <workItem from="1677049709667" duration="1545000" />
-      <workItem from="1677127270967" duration="3390000" />
+      <workItem from="1677127270967" duration="4217000" />
     </task>
     <servers />
   </component>
