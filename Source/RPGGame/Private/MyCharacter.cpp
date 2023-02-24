@@ -25,6 +25,11 @@ AMyCharacter::AMyCharacter()
 	CameraComp->bUsePawnControlRotation=true;
 
 	TimeToHitParamName = "TimeToHit";
+
+	StringTArray.Add("MeleeAttack_A");
+	StringTArray.Add("MeleeAttack_B");
+	StringTArray.Add("MeleeAttack_C");
+	StringTArray.Add("MeleeAttack_D");
 }
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -49,8 +54,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Sprint",IE_Released,this,&AMyCharacter::SprintStop);
 	PlayerInputComponent->BindAction("Dash",IE_Pressed,this,&AMyCharacter::Dash);
 
-	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::MeleeAttack01_OnClickBegin);
-	PlayerInputComponent->BindAction("MeleeAttack01",IE_Released,this,&AMyCharacter::MeleeAttack01_OnClickEnd);
+	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::AttackBegin);
 	
 }
 
@@ -127,49 +131,46 @@ void AMyCharacter::MeleeAttack01()
 	ActionComp->StartActionByName(this,"MeleeAttack01");
 }
 
-void AMyCharacter::MeleeAttack01_OnClickBegin()
-{
-	bClicking = true;
-	if (!bAttacking ) {
-		AttackBegin();
-	}
-}
-
-void AMyCharacter::MeleeAttack01_OnClickEnd()
-{
-	bClicking = false;
-}
 
 void AMyCharacter::AttackBegin()
 {
-	bAttacking = true;
 	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
-	if (AttackAnim && Instance && !Instance->Montage_IsPlaying(AttackAnim)) {
+	if(!bAttacking)
+	{
 		Instance->Montage_Play(AttackAnim);
+		bAttacking=true;
+	}
+	
+	SectionName=Instance->Montage_GetCurrentSection();
+	FString TargetName(SectionName.ToString());
+	StringTArray.Find(TargetName, Index);
+	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,TargetName);
 
-		switch (FMath::RandRange((int32)1, 4)) {
+		switch (Index) {
+		case 0 :
+			Instance->Montage_JumpToSection("MeleeAttack_B");
+			break;
 		case 1 : 
-			Instance->Montage_JumpToSection(FName("MeleeAttack_A"), AttackAnim);
+			Instance->Montage_JumpToSection("MeleeAttack_C");
 			break;
 		case 2 : 
-			Instance->Montage_JumpToSection(FName("MeleeAttack_B"), AttackAnim);
+			Instance->Montage_JumpToSection("MeleeAttack_D");
 			break;
-		case 3 : 
-			Instance->Montage_JumpToSection(FName("MeleeAttack_C"), AttackAnim);
+		default:
+			Instance->Montage_JumpToSection("MeleeAttack_A");
 			break;
-		case 4 :
-			Instance->Montage_JumpToSection(FName("MeleeAttack_D"),AttackAnim);
 		}
-	}
 }
 
 void AMyCharacter::AttackEnd()
 {
 	bAttacking = false;
-	// 鼠标还是按着的状态，那么就继续攻击
+	Index=0;
+	StopAnimMontage(AttackAnim);
+	/*// 鼠标还是按着的状态，那么就继续攻击
 	if (bClicking ) { 
 		AttackBegin();
-	}
+	}*/
 }
 
 //对玩家造成伤害/治愈

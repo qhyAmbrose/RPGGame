@@ -68,11 +68,6 @@ protected:
 
 	void MeleeAttack01();
 	
-	UFUNCTION()
-	void MeleeAttack01_OnClickBegin();
-	
-	UFUNCTION()
-	void MeleeAttack01_OnClickEnd();
 	
 	void AttackBegin();
 
@@ -82,7 +77,11 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
 	bool bAttacking;
-	bool bClicking;
+	TArray<FString> StringTArray;
+
+	FName SectionName;
+	int32 Index;
+
 	
 	UFUNCTION()
     void OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta);
