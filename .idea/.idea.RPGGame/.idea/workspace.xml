@@ -5,13 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/MeleeAttack01_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/MeleeAttack01_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
-    </list>
+    <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +222,7 @@
       <workItem from="1676982151130" duration="630000" />
       <workItem from="1677049709667" duration="1545000" />
       <workItem from="1677127270967" duration="7415000" />
-      <workItem from="1677211844147" duration="19487000" />
+      <workItem from="1677211844147" duration="20004000" />
     </task>
     <servers />
   </component>

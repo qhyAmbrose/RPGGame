@@ -141,7 +141,7 @@ void AMyCharacter::AttackBegin()
 		bAttacking=true;
 	}
 	
-	SectionName=Instance->Montage_GetCurrentSection();
+	SectionName=Instance->Montage_GetCurrentSection(AttackAnim);
 	FString TargetName(SectionName.ToString());
 	StringTArray.Find(TargetName, Index);
 	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,TargetName);
