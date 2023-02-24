@@ -48,6 +48,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Sprint",IE_Pressed,this,&AMyCharacter::SprintStart);
 	PlayerInputComponent->BindAction("Sprint",IE_Released,this,&AMyCharacter::SprintStop);
 	PlayerInputComponent->BindAction("Dash",IE_Pressed,this,&AMyCharacter::Dash);
+
+	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::MeleeAttack01_OnClickBegin);
+	PlayerInputComponent->BindAction("MeleeAttack01",IE_Released,this,&AMyCharacter::MeleeAttack01_OnClickEnd);
 	
 }
 
@@ -116,6 +119,56 @@ void AMyCharacter::PrimaryInteract()
 	if(InteractionComp)
 	{
 		InteractionComp->PrimaryInteract();
+	}
+}
+
+void AMyCharacter::MeleeAttack01()
+{
+	ActionComp->StartActionByName(this,"MeleeAttack01");
+}
+
+void AMyCharacter::MeleeAttack01_OnClickBegin()
+{
+	bClicking = true;
+	if (!bAttacking ) {
+		AttackBegin();
+	}
+}
+
+void AMyCharacter::MeleeAttack01_OnClickEnd()
+{
+	bClicking = false;
+}
+
+void AMyCharacter::AttackBegin()
+{
+	bAttacking = true;
+	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
+	if (AttackAnim && Instance && !Instance->Montage_IsPlaying(AttackAnim)) {
+		Instance->Montage_Play(AttackAnim);
+
+		switch (FMath::RandRange((int32)1, 4)) {
+		case 1 : 
+			Instance->Montage_JumpToSection(FName("MeleeAttack_A"), AttackAnim);
+			break;
+		case 2 : 
+			Instance->Montage_JumpToSection(FName("MeleeAttack_B"), AttackAnim);
+			break;
+		case 3 : 
+			Instance->Montage_JumpToSection(FName("MeleeAttack_C"), AttackAnim);
+			break;
+		case 4 :
+			Instance->Montage_JumpToSection(FName("MeleeAttack_D"),AttackAnim);
+		}
+	}
+}
+
+void AMyCharacter::AttackEnd()
+{
+	bAttacking = false;
+	// 鼠标还是按着的状态，那么就继续攻击
+	if (bClicking ) { 
+		AttackBegin();
 	}
 }
 

@@ -65,6 +65,24 @@ protected:
 	void Dash();
 
 	void PrimaryInteract();
+
+	void MeleeAttack01();
+	
+	UFUNCTION()
+	void MeleeAttack01_OnClickBegin();
+	
+	UFUNCTION()
+	void MeleeAttack01_OnClickEnd();
+	
+	void AttackBegin();
+
+	UFUNCTION(BlueprintCallable)
+	void AttackEnd();
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* AttackAnim;
+	bool bAttacking;
+	bool bClicking;
 	
 	UFUNCTION()
     void OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta);
