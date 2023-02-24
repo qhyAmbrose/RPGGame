@@ -165,7 +165,7 @@ void AMyCharacter::AttackBegin()
 void AMyCharacter::AttackEnd()
 {
 	bAttacking = false;
-	Index=0;
+	Index=3;
 	StopAnimMontage(AttackAnim);
 	/*// 鼠标还是按着的状态，那么就继续攻击
 	if (bClicking ) { 
