@@ -7,8 +7,14 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/MeleeAttack01_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/MeleeAttack01_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP_Walk.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +232,8 @@
       <workItem from="1676982151130" duration="630000" />
       <workItem from="1677049709667" duration="1545000" />
       <workItem from="1677127270967" duration="7415000" />
-      <workItem from="1677211844147" duration="21016000" />
+      <workItem from="1677211844147" duration="21849000" />
+      <workItem from="1677319555833" duration="9738000" />
     </task>
     <servers />
   </component>

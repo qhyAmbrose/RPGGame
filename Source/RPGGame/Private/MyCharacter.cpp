@@ -3,8 +3,12 @@
 
 #include "MyCharacter.h"
 
+#include "MyGameplayFunctionLibrary.h"
+#include "AI/MyAICharacter.h"
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 
 // Sets default values
@@ -54,7 +58,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Sprint",IE_Released,this,&AMyCharacter::SprintStop);
 	PlayerInputComponent->BindAction("Dash",IE_Pressed,this,&AMyCharacter::Dash);
 
-	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::AttackBegin);
+	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::MeleeAttack01Begin);
 	
 }
 
@@ -126,27 +130,23 @@ void AMyCharacter::PrimaryInteract()
 	}
 }
 
-void AMyCharacter::MeleeAttack01()
-{
-	ActionComp->StartActionByName(this,"MeleeAttack01");
-}
-
-
-void AMyCharacter::AttackBegin()
+void AMyCharacter::MeleeAttack01Begin()
 {
 	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
+	//如果收招则从第一招开始打，并设置为连击状态
 	if(!bAttacking)
 	{
 		Instance->Montage_Play(AttackAnim);
 		bAttacking=true;
 	}
-	
+	//得到当前蒙太奇片段的名称，与构造函数中声明的数组一一对应
 	SectionName=Instance->Montage_GetCurrentSection(AttackAnim);
 	FString TargetName(SectionName.ToString());
 	StringTArray.Find(TargetName, Index);
-	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,TargetName);
+	//GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,TargetName);
 
-		switch (Index) {
+	//当攻击A的时候按攻击键跳向B，。。。
+	switch (Index) {
 		case 0 :
 			Instance->Montage_JumpToSection("MeleeAttack_B");
 			break;
@@ -159,18 +159,75 @@ void AMyCharacter::AttackBegin()
 		default:
 			Instance->Montage_JumpToSection("MeleeAttack_A");
 			break;
-		}
+	}
 }
 
+//每个蒙太奇片段结束后的动画通知都会调用的函数
 void AMyCharacter::AttackEnd()
 {
+	//收招并设置为非连击状态
 	bAttacking = false;
 	Index=3;
 	StopAnimMontage(AttackAnim);
-	/*// 鼠标还是按着的状态，那么就继续攻击
-	if (bClicking ) { 
-		AttackBegin();
-	}*/
+}
+
+void AMyCharacter::AttackCheck()
+{
+		/*ActionComp->StartActionByName(this,"MeleeAttack01");*/
+		FVector HandLocation = this->GetMesh()->GetSocketLocation(LeftHandSocketName);
+
+		//①得到SpawnParams
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; 
+		SpawnParams.Instigator = this;
+
+		FCollisionShape Shape;
+		Shape.SetSphere(10);
+
+		// Ignore Player
+		FCollisionQueryParams Params;
+		Params.AddIgnoredActor(this);
+
+		FCollisionObjectQueryParams ObjParams;
+		ObjParams.AddObjectTypesToQuery(ECC_Pawn);
+
+		FVector TraceStart =HandLocation;
+		// endpoint far into the look-at distance (not too far, still adjust somewhat towards crosshair on a miss)
+		//端点距离观察距离较远（不太远，在未命中时仍朝十字准线方向调整）
+		FVector TraceEnd = TraceStart + (this->GetControlRotation().Vector() * 5);
+		FHitResult Hit;
+		
+		// returns true if we got to a blocking hit
+		if (GetWorld()->SweepSingleByObjectType(Hit, TraceStart, TraceEnd, FQuat::Identity, ObjParams, Shape, Params))
+		{
+			GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,"Right!");
+			//对击中目标进行伤害以及受击动画的操作
+			AMyAICharacter* Monsters=Cast<AMyAICharacter>(Hit.GetActor());
+			// Apply Damage & Impulse
+			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 80, Hit))
+			{
+				/*//呈现粒子效果
+				UGameplayStatics::SpawnEmitterAtLocation(this, ImpactVFX, GetActorLocation(), GetActorRotation());
+
+				//播放音效
+				UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
+
+				//摄像机镜头晃动
+				UGameplayStatics::PlayWorldCameraShake(this, ImpactShake, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);*/
+
+				/*if (ActionComp && BurningActionClass && HasAuthority())
+				{
+					//给怪物附加BurningAction
+					ActionComp->AddAction(GetInstigator(), BurningActionClass);
+				}*/
+			}
+		}
+		/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
+		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+		*/
+		DrawDebugSphere(GetWorld(),TraceEnd,10.f,8,FColor::Green,false,1);
+		
+			
 }
 
 //对玩家造成伤害/治愈

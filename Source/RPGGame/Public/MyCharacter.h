@@ -69,18 +69,24 @@ protected:
 	void MeleeAttack01();
 	
 	
-	void AttackBegin();
+	void MeleeAttack01Begin();
 
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
+
+	UFUNCTION(BlueprintCallable)
+	void AttackCheck();
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
 	bool bAttacking;
 	TArray<FString> StringTArray;
-
 	FName SectionName;
 	int32 Index;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	FName LeftHandSocketName;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	FName RightHandSocketName;
 
 	
 	UFUNCTION()
