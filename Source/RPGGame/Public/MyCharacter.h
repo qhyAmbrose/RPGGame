@@ -66,9 +66,6 @@ protected:
 
 	void PrimaryInteract();
 
-	void MeleeAttack01();
-	
-	
 	void MeleeAttack01Begin();
 
 	UFUNCTION(BlueprintCallable)
@@ -79,11 +76,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
-	
 	bool bAttacking;
 	TArray<FString> StringTArray;
 	int32 Index;
-
 	FName SectionName;
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	FName LeftHandSocketName;
@@ -99,8 +94,6 @@ protected:
 	virtual FVector GetPawnViewLocation() const override;
 
 public:
-	bool GetIsAttacking();
-	void SetIsAttacking(bool IsAttacking);
 	
 	AMyCharacter();
 

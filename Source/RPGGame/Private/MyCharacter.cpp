@@ -300,15 +300,6 @@ FVector AMyCharacter::GetPawnViewLocation() const
 	return CameraComp->GetComponentLocation();
 }
 
-bool AMyCharacter::GetIsAttacking()
-{
-	return bAttacking;
-}
-
-void AMyCharacter::SetIsAttacking(bool IsAttacking)
-{
-	bAttacking=IsAttacking;
-}
 
 
 
