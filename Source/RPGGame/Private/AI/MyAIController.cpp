@@ -26,16 +26,16 @@ void AMyAIController::BeginPlay()
 	}
 }
 
-void AMyAIController::Tick(float DeltaSeconds)
+/*void AMyAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	//让AI朝向玩家
-	/*ACharacter* MyPawn = Cast<ACharacter>(this->GetPawn());
+	ACharacter* MyPawn = Cast<ACharacter>(this->GetPawn());
 	AActor* TargetActor = Cast<AActor>(this->GetBlackboardComponent()->GetValueAsObject("TargetActor"));
 
 	FVector MuzzleLocation = MyPawn->GetMesh()->GetSocketLocation("head");
 	FVector Direction = TargetActor->GetActorLocation() - MuzzleLocation;
 	FRotator MuzzleRotation = Direction.Rotation();
 	
-	MyPawn->SetActorRotation(MuzzleRotation,ETeleportType::None);*/
-}
+	MyPawn->SetActorRotation(MuzzleRotation,ETeleportType::None);
+}*/

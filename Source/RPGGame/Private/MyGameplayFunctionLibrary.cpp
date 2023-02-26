@@ -40,13 +40,21 @@ bool UMyGameplayFunctionLibrary::ApplyDirectionalDamage(AActor* DamageCauser, AA
 		//让这两个向量在一个平面上
 		TargetActorLocation.Z=HitLocation.Z;
 		//计算两个向量之间的夹角
-		float a;
+		/*float a;
 		a=HitLocation.Dot(TargetActorLocation);
 		float b=a/(HitLocation.Length()*TargetActorLocation.Length());
-		float Angel=FMath::RadiansToDegrees(acosf(b));
-
-		FString ProjRotationMsg=FString::Printf(TEXT("%f"),Angel);
+		float Angel=FMath::RadiansToDegrees(acosf(b));*/
+		FRotator TargetRotation=FRotationMatrix::MakeFromX(TargetActorLocation-HitLocation).Rotator();
+		
+		
+		float HitReactionAngle=TargetRotation.Yaw;
+		if(HitReactionAngle<0)
+		{
+			HitReactionAngle+=360;
+		}
+		FString ProjRotationMsg=FString::Printf(TEXT("%s%f"),*TargetRotation.ToString(),HitReactionAngle);
 		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+
 
 		return true;
 	}

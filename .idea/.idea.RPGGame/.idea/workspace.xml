@@ -7,16 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonMinions/Characters/Minions/Down_Minions/Animations/Ranged/Blendspaces/IdleToRun_A_Combat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ParagonMinions/Characters/Minions/Down_Minions/Animations/Ranged/Blendspaces/IdleToRun_A_Combat.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ParagonMinions/Characters/Minions/Down_Minions/Meshes/MinionRanged_AnimBP.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionAIBP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionBT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionBT.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/SpawnCreditsCurve.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/SpawnCreditsCurve.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_MagicProjectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Actions/Action_MagicProjectile.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAIController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyBTTask_RangedAttack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyBTTask_RangedAttack.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameplayFunctionLibrary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameplayFunctionLibrary.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameplayFunctionLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameplayFunctionLibrary.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/AI/MyAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/AI/MyAIController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +230,7 @@
       <workItem from="1677127270967" duration="7415000" />
       <workItem from="1677211844147" duration="21849000" />
       <workItem from="1677319555833" duration="11155000" />
-      <workItem from="1677385843488" duration="15204000" />
+      <workItem from="1677385843488" duration="17072000" />
     </task>
     <servers />
   </component>
