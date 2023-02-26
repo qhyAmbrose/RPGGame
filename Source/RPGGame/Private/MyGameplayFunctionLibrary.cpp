@@ -31,6 +31,23 @@ bool UMyGameplayFunctionLibrary::ApplyDirectionalDamage(AActor* DamageCauser, AA
 
 			HitComp->AddImpulseAtLocation(Direction * 300000.f, HitResult.ImpactPoint, HitResult.BoneName);
 		}
+		//计算攻击者与被攻击者的角度
+		
+		//被打击对象的位置
+		FVector TargetActorLocation=TargetActor->GetActorLocation();
+		//打击点的位置
+		FVector HitLocation=HitResult.Location;
+		//让这两个向量在一个平面上
+		TargetActorLocation.Z=HitLocation.Z;
+		//计算两个向量之间的夹角
+		float a;
+		a=HitLocation.Dot(TargetActorLocation);
+		float b=a/(HitLocation.Length()*TargetActorLocation.Length());
+		float Angel=FMath::RadiansToDegrees(acosf(b));
+
+		FString ProjRotationMsg=FString::Printf(TEXT("%f"),Angel);
+		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+
 		return true;
 	}
 

@@ -10,6 +10,7 @@
  * 
  */
 UCLASS()
+//一个全局的静态函数类，即不需要指定继承自某个C++类，这个全局类可以被当前工程下的所有蓝图类调用
 class RPGGAME_API UMyGameplayFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()

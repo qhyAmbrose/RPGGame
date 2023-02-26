@@ -39,7 +39,7 @@ EBTNodeResult::Type UMyBTTask_RangedAttack::ExecuteTask(UBehaviorTreeComponent& 
 		}
 
 		//通过AIController获得AIPawn身上的骨骼位置，以及投射物发射方向
-		FVector MuzzleLocation = MyPawn->GetMesh()->GetSocketLocation("head");
+		FVector MuzzleLocation = MyPawn->GetMesh()->GetSocketLocation("gun_foregrip");
 		FVector Direction = TargetActor->GetActorLocation() - MuzzleLocation;
 		FRotator MuzzleRotation = Direction.Rotation();
 
