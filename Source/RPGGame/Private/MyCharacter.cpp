@@ -132,6 +132,9 @@ void AMyCharacter::PrimaryInteract()
 
 void AMyCharacter::MeleeAttack01Begin()
 {
+	//主要是完成标签的工作
+	ActionComp->StartActionByName(this,"MeleeAttack01");
+	
 	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
 	//如果收招则从第一招开始打，并设置为连击状态
 	if(!bAttacking)
@@ -167,10 +170,11 @@ void AMyCharacter::AttackEnd()
 {
 	//收招并设置为非连击状态
 	bAttacking = false;
-	Index=3;
 	StopAnimMontage(AttackAnim);
+	//移除标签
+	ActionComp->StopActionByName(this,"MeleeAttack01");
 }
-
+//查询近战攻击目标并应用伤害
 void AMyCharacter::AttackCheck()
 {
 		/*ActionComp->StartActionByName(this,"MeleeAttack01");*/
@@ -295,6 +299,18 @@ FVector AMyCharacter::GetPawnViewLocation() const
 {
 	return CameraComp->GetComponentLocation();
 }
+
+bool AMyCharacter::GetIsAttacking()
+{
+	return bAttacking;
+}
+
+void AMyCharacter::SetIsAttacking(bool IsAttacking)
+{
+	bAttacking=IsAttacking;
+}
+
+
 
 
 

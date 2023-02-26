@@ -7,40 +7,54 @@
 
 UMyAction_MeleeAttack::UMyAction_MeleeAttack()
 {
-	HandSocketName = "hand_r";
-	AttackAnimDelay = 0.2f;
+	
+	/*StringTArray.Add("MeleeAttack_A");
+	StringTArray.Add("MeleeAttack_B");
+	StringTArray.Add("MeleeAttack_C");
+	StringTArray.Add("MeleeAttack_D");*/
 }
 
 void UMyAction_MeleeAttack::StartAction_Implementation(AActor* Instigator)
 {
-	Super::StartAction_Implementation(Instigator);
-	ACharacter* Character = Cast<ACharacter>(Instigator);
-	if (Character)
-	{
-		Character->PlayAnimMontage(AttackAnim);
-
-		UGameplayStatics::SpawnEmitterAttached(CastingEffect, Character->GetMesh(), HandSocketName, FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::SnapToTarget);
-
-		UGameplayStatics::SpawnSoundAttached(CastingSound, Character->GetMesh());
-
-		if (Character->HasAuthority())
-		{
-			FTimerHandle TimerHandle_AttackDelay;
-			FTimerDelegate Delegate;
-			Delegate.BindUFunction(this, "AttackDelay_Elapsed", Character);
-
-			//在AttackAnimDelay秒后，执行委托Delegate，不循环
-			GetWorld()->GetTimerManager().SetTimer(TimerHandle_AttackDelay, Delegate, AttackAnimDelay, false);
-		}
-	}
-}
-
-//射线检测是否击中目标
-void UMyAction_MeleeAttack::AttackDelay_Elapsed(ACharacter* InstigatorCharacter)
-{
 	
-	StopAction(InstigatorCharacter);
+	Super::StartAction_Implementation(Instigator);
+	/*AMyCharacter* Character = Cast<AMyCharacter>(Instigator);
+	UAnimInstance* Instance = Character->GetMesh()->GetAnimInstance();
+	//如果收招则从第一招开始打，并设置为连击状态
+	if(!Character->GetIsAttacking())
+	{
+		Instance->Montage_Play(AttackAnim);
+		Character->SetIsAttacking(true);
+	}
+	//得到当前蒙太奇片段的名称，与构造函数中声明的数组一一对应
+	SectionName=Instance->Montage_GetCurrentSection(AttackAnim);
+	FString TargetName(SectionName.ToString());
+	StringTArray.Find(TargetName, Index);
+	//GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,TargetName);
+
+	//当攻击A的时候按攻击键跳向B，。。。
+	switch (Index) {
+	case 0 :
+		Instance->Montage_JumpToSection("MeleeAttack_B");
+		break;
+	case 1 : 
+		Instance->Montage_JumpToSection("MeleeAttack_C");
+		break;
+	case 2 : 
+		Instance->Montage_JumpToSection("MeleeAttack_D");
+		break;
+	default:
+		Instance->Montage_JumpToSection("MeleeAttack_A");
+		break;
+	}*/
 }
+
+void UMyAction_MeleeAttack::StopAction_Implementation(AActor* Instigator)
+{
+	Super::StopAction_Implementation(Instigator);
+}
+
+
 
 
 

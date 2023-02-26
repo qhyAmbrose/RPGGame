@@ -79,10 +79,12 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
+	
 	bool bAttacking;
 	TArray<FString> StringTArray;
-	FName SectionName;
 	int32 Index;
+
+	FName SectionName;
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	FName LeftHandSocketName;
 	UPROPERTY(EditAnywhere, Category = "Effects")
@@ -97,6 +99,9 @@ protected:
 	virtual FVector GetPawnViewLocation() const override;
 
 public:
+	bool GetIsAttacking();
+	void SetIsAttacking(bool IsAttacking);
+	
 	AMyCharacter();
 
 	// Called to bind functionality to input

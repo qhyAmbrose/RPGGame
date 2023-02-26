@@ -14,13 +14,8 @@ class RPGGAME_API UMyAction_MeleeAttack : public UMyAction
 {
 	GENERATED_BODY()
 protected:
-	UPROPERTY(EditAnywhere, Category = "Effects")
-	FName HandSocketName;
- 
-	UPROPERTY(EditDefaultsOnly, Category = "Attack")
-	float AttackAnimDelay;
 
-	UPROPERTY(EditAnywhere, Category = "Attack")
+	/*UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
@@ -29,11 +24,18 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	USoundBase* CastingSound;
 
-	UFUNCTION()
-	virtual void AttackDelay_Elapsed(ACharacter* InstigatorCharacter);
+	int32 Index;
+	TArray<FString> StringTArray;
+	FName SectionName;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	FName LeftHandSocketName;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	FName RightHandSocketName;*/
+
 public:
 
 	virtual void StartAction_Implementation(AActor* Instigator) override;
+	virtual void StopAction_Implementation(AActor* Instigator) override;
 	
 	UMyAction_MeleeAttack();
 };
