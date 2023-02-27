@@ -21,6 +21,8 @@ class RPGGAME_API UMyGameplayFunctionLibrary : public UBlueprintFunctionLibrary
     
     	UFUNCTION(BlueprintCallable, Category = "Gameplay")
     	static bool ApplyDirectionalDamage(AActor* DamageCauser, AActor* TargetActor, float DamageAmount, const FHitResult& HitResult);
-    
+
+		UFUNCTION(BlueprintCallable, Category = "Gameplay")
+		static float GetHitReactionAngle(AActor* TargetActor, const FHitResult& HitResult);
 
 };

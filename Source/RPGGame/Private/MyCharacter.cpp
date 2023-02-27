@@ -212,12 +212,14 @@ void AMyCharacter::AttackCheck()
 		// returns true if we got to a blocking hit
 		if (GetWorld()->SweepSingleByObjectType(Hit, TraceStart, TraceEnd, FQuat::Identity, ObjParams, Shape, Params))
 		{
-			GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,"Right!");
 			//对击中目标进行伤害以及受击动画的操作
 			AMyAICharacter* Monsters=Cast<AMyAICharacter>(Hit.GetActor());
+			//得到受击角度
+			HitReactionAngle=UMyGameplayFunctionLibrary::GetHitReactionAngle(Monsters,Hit);
 			// Apply Damage & Impulse
-			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 80, Hit))
+			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 10, Hit))
 			{
+				//Monsters->GetHit(this,HitReactionAngle);
 				/*//呈现粒子效果
 				UGameplayStatics::SpawnEmitterAtLocation(this, ImpactVFX, GetActorLocation(), GetActorRotation());
 
@@ -246,6 +248,11 @@ void AMyCharacter::AttackCheck()
 void AMyCharacter::HealthChange(float Amount)
 {
 	AttributeComp->ApplyHealthChange(this, Amount);
+}
+
+float AMyCharacter::GetHitReactionAngle()
+{
+	return HitReactionAngle;
 }
 
 //应用伤害/治愈的最后一步

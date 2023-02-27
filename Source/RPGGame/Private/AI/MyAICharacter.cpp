@@ -7,7 +7,10 @@
 #include "BrainComponent.h"
 #include "MyActionComponent.h"
 #include "MyAttributeComponent.h"
+#include "MyCharacter.h"
 #include "MyWorldUserWidget.h"
+#include "AI/MyAIController.h"
+#include "AI/NavigationSystemBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/CapsuleComponent.h"
@@ -35,6 +38,7 @@ AMyAICharacter::AMyAICharacter()
 
 	TimeToHitParamName = "TimeToHit";
 	TargetActorKey = "TargetActor";
+	bIsNotHit=true;
 }
 
 
@@ -83,7 +87,7 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 		}
 
 		GetMesh()->SetScalarParameterValueOnMaterials(TimeToHitParamName, GetWorld()->TimeSeconds);
-
+		
 		// Died
 		if (NewHealth <= 0.0f)
 		{
@@ -104,7 +108,18 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 			// set lifespan
 			SetLifeSpan(10.0f);
 		}
+		//受到攻击僵直
+		bIsNotHit=false;
+		GetCharacterMovement()->StopMovementImmediately();
+		FTimerHandle TimerHandle_GetHitDelay;
+		GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, false, 1.0f);
 	}
+}
+
+void AMyAICharacter::AfterGetHit()
+{
+	GetCharacterMovement()->ResetMoveState();
+	bIsNotHit=true;
 }
 
 

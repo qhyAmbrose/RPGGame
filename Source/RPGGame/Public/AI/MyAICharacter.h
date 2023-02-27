@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MyCharacter.h"
 #include "GameFramework/Character.h"
 #include "MyAICharacter.generated.h"
 class UUserWidget;
@@ -10,6 +11,8 @@ class UMyWorldUserWidget;
 class UPawnSensingComponent;
 class UMyAttributeComponent;
 class UMyActionComponent;
+
+
 UCLASS()
 class RPGGAME_API AMyAICharacter : public ACharacter
 {
@@ -43,10 +46,16 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "AI")
 	AActor* GetTargetActor() const;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bIsNotHit;
+
 	virtual void PostInitializeComponents() override;
 
 	UFUNCTION()
 	void OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta);
+
+	UFUNCTION()
+	void AfterGetHit();
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UPawnSensingComponent* PawnSensingComp;
@@ -62,5 +71,7 @@ protected:
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void MulticastPawnSeen();
+
+	
 };
 	

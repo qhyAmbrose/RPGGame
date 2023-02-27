@@ -86,6 +86,7 @@ protected:
 	FName RightHandSocketName;
 
 	
+	
 	UFUNCTION()
     void OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta);
 
@@ -94,6 +95,8 @@ protected:
 	virtual FVector GetPawnViewLocation() const override;
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Attack")
+	float HitReactionAngle;
 	
 	AMyCharacter();
 
@@ -102,5 +105,8 @@ public:
 
 	UFUNCTION(Exec)
 	void HealthChange(float Amount = 100);
+
+	UFUNCTION()
+	float GetHitReactionAngle();
 	
 };
