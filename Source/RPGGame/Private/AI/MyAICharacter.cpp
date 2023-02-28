@@ -38,6 +38,7 @@ AMyAICharacter::AMyAICharacter()
 
 	TimeToHitParamName = "TimeToHit";
 	TargetActorKey = "TargetActor";
+
 	bIsNotHit=true;
 }
 
@@ -108,11 +109,11 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 			// set lifespan
 			SetLifeSpan(10.0f);
 		}
-		//受到攻击僵直
+		
+		//受到攻击僵直，受击动画的bool值
 		bIsNotHit=false;
 		GetCharacterMovement()->StopMovementImmediately();
-		FTimerHandle TimerHandle_GetHitDelay;
-		GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, false, 1.0f);
+		GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, 1.f, false);
 	}
 }
 

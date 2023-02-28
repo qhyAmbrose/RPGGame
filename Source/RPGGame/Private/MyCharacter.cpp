@@ -214,11 +214,12 @@ void AMyCharacter::AttackCheck()
 		{
 			//对击中目标进行伤害以及受击动画的操作
 			AMyAICharacter* Monsters=Cast<AMyAICharacter>(Hit.GetActor());
-			//得到受击角度
-			HitReactionAngle=UMyGameplayFunctionLibrary::GetHitReactionAngle(Monsters,Hit);
+			
 			// Apply Damage & Impulse
 			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 10, Hit))
 			{
+				//得到受击角度
+				HitReactionAngle=UMyGameplayFunctionLibrary::GetHitReactionAngle(Monsters,Hit);
 				//Monsters->GetHit(this,HitReactionAngle);
 				/*//呈现粒子效果
 				UGameplayStatics::SpawnEmitterAtLocation(this, ImpactVFX, GetActorLocation(), GetActorRotation());

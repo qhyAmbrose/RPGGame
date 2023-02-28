@@ -58,8 +58,8 @@ float UMyGameplayFunctionLibrary::GetHitReactionAngle(AActor* TargetActor, const
 	{
 		HitReactionAngle+=360;
 	}
-	FString ProjRotationMsg=FString::Printf(TEXT("%f"),HitReactionAngle);
-	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+	/*FString ProjRotationMsg=FString::Printf(TEXT("%f"),HitReactionAngle);
+	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);*/
 	
 	return HitReactionAngle;
 }

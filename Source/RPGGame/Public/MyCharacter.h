@@ -84,8 +84,6 @@ protected:
 	FName LeftHandSocketName;
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	FName RightHandSocketName;
-
-	
 	
 	UFUNCTION()
     void OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta);

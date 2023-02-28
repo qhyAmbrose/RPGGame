@@ -57,6 +57,9 @@ protected:
 	UFUNCTION()
 	void AfterGetHit();
 
+	FTimerHandle TimerHandle_GetHitDelay;
+
+
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UPawnSensingComponent* PawnSensingComp;
 
