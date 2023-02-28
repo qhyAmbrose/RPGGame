@@ -34,6 +34,9 @@ AMyCharacter::AMyCharacter()
 	StringTArray.Add("MeleeAttack_B");
 	StringTArray.Add("MeleeAttack_C");
 	StringTArray.Add("MeleeAttack_D");
+
+	ImpactShakeInnerRadius = 0.0f;
+	ImpactShakeOuterRadius = 1500.0f;
 }
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -216,19 +219,18 @@ void AMyCharacter::AttackCheck()
 			AMyAICharacter* Monsters=Cast<AMyAICharacter>(Hit.GetActor());
 			
 			// Apply Damage & Impulse
-			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 10, Hit))
+			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Monsters, 15, Hit))
 			{
 				//得到受击角度
 				HitReactionAngle=UMyGameplayFunctionLibrary::GetHitReactionAngle(Monsters,Hit);
-				//Monsters->GetHit(this,HitReactionAngle);
-				/*//呈现粒子效果
+				//呈现粒子效果
 				UGameplayStatics::SpawnEmitterAtLocation(this, ImpactVFX, GetActorLocation(), GetActorRotation());
 
 				//播放音效
 				UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
 
 				//摄像机镜头晃动
-				UGameplayStatics::PlayWorldCameraShake(this, ImpactShake, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);*/
+				UGameplayStatics::PlayWorldCameraShake(this, ImpactShake, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);
 
 				/*if (ActionComp && BurningActionClass && HasAuthority())
 				{

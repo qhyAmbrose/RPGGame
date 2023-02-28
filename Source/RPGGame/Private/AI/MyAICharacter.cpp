@@ -110,10 +110,13 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 			SetLifeSpan(10.0f);
 		}
 		
-		//受到攻击僵直，受击动画的bool值
-		bIsNotHit=false;
-		GetCharacterMovement()->StopMovementImmediately();
-		GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, 1.f, false);
+		//受到攻击僵直，设置受击动画的bool值，防止燃烧也僵直
+		if(Delta<-10.f)
+		{
+			bIsNotHit=false;
+			GetCharacterMovement()->StopMovementImmediately();
+			GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, 0.5f, false);
+		}
 	}
 }
 
