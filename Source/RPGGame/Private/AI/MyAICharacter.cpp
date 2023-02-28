@@ -8,6 +8,7 @@
 #include "MyActionComponent.h"
 #include "MyAttributeComponent.h"
 #include "MyCharacter.h"
+#include "MyGameplayFunctionLibrary.h"
 #include "MyWorldUserWidget.h"
 #include "AI/MyAIController.h"
 #include "AI/NavigationSystemBase.h"
@@ -15,6 +16,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Perception/PawnSensingComponent.h"
 
 
@@ -166,4 +168,65 @@ void AMyAICharacter::MulticastPawnSeen_Implementation()
 		// May end up behind the minion health bar otherwise.
 		NewWidget->AddToViewport(10);
 	}
+}
+//查询近战攻击目标并应用伤害
+void AMyAICharacter::AttackCheck()
+{
+	FVector HandLocation;
+	FVector RHandLocation;
+	HandLocation = this->GetMesh()->GetSocketLocation(LeftHandSocketName);
+	RHandLocation=this->GetMesh()->GetSocketLocation(RightHandSocketName);
+		//①得到SpawnParams
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; 
+		SpawnParams.Instigator = this;
+
+		FCollisionShape Shape;
+		Shape.SetSphere(30);
+
+		// Ignore Player
+		FCollisionQueryParams Params;
+		Params.AddIgnoredActor(this);
+
+		FCollisionObjectQueryParams ObjParams;
+		ObjParams.AddObjectTypesToQuery(ECC_Pawn);
+
+		FVector TraceStart =HandLocation;
+		// endpoint far into the look-at distance (not too far, still adjust somewhat towards crosshair on a miss)
+		//端点距离观察距离较远（不太远，在未命中时仍朝十字准线方向调整）
+		FVector TraceEnd = TraceStart + (this->GetControlRotation().Vector() * 50);
+		FHitResult Hit;
+		
+		// returns true if we got to a blocking hit
+		if (GetWorld()->SweepSingleByObjectType(Hit, TraceStart, TraceEnd, FQuat::Identity, ObjParams, Shape, Params)||
+	GetWorld()->SweepSingleByObjectType(Hit, RHandLocation, TraceEnd, FQuat::Identity, ObjParams, Shape, Params))
+		{
+			//对击中目标进行伤害以及受击动画的操作
+			AMyCharacter* Player=Cast<AMyCharacter>(Hit.GetActor());
+			
+			// Apply Damage & Impulse
+			if (UMyGameplayFunctionLibrary::ApplyDirectionalDamage(this, Player, 15, Hit))
+			{
+				//呈现粒子效果
+				UGameplayStatics::SpawnEmitterAtLocation(this, ImpactVFX, GetActorLocation(), GetActorRotation());
+
+				//播放音效
+				UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
+
+				//摄像机镜头晃动
+				UGameplayStatics::PlayWorldCameraShake(this, ImpactShake, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);
+
+				/*if (ActionComp && BurningActionClass && HasAuthority())
+				{
+					//给怪物附加BurningAction
+					ActionComp->AddAction(GetInstigator(), BurningActionClass);
+				}*/
+			}
+		}
+		/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
+		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
+		*/
+		DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);
+		
+			
 }

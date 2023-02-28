@@ -5,8 +5,10 @@
 
 #include "AIController.h"
 #include "MyAttributeComponent.h"
+#include "AI/MyAICharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 UMyBTTask_ZombieAttack::UMyBTTask_ZombieAttack()
 {
@@ -19,7 +21,7 @@ EBTNodeResult::Type UMyBTTask_ZombieAttack::ExecuteTask(UBehaviorTreeComponent& 
 	AAIController* MyController = OwnerComp.GetAIOwner();
 	if (ensure(MyController))
 	{
-		ACharacter* MyPawn = Cast<ACharacter>(MyController->GetPawn());
+		AMyAICharacter* MyPawn = Cast<AMyAICharacter>(MyController->GetPawn());
 		if (MyPawn == nullptr)
 		{
 			return EBTNodeResult::Failed;

@@ -75,10 +75,32 @@ protected:
 	UFUNCTION(NetMulticast, Unreliable)
 	void MulticastPawnSeen();
 
-	UFUNCTION()
-	void AttackEnd();
+	
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	FName LeftHandSocketName;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	FName RightHandSocketName;
+	//该类可以被编写为摄像机的振荡振动或动画振动
+	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
+	TSubclassOf<UCameraShakeBase> ImpactShake;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
+	float ImpactShakeInnerRadius;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
+	float ImpactShakeOuterRadius;
 	
+	UPROPERTY(EditDefaultsOnly,Category="Effects")
+	UParticleSystem* ImpactVFX;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	USoundCue* ImpactSound;
+public:
+	UFUNCTION(BlueprintCallable)
+	void AttackEnd();
+	UFUNCTION(BlueprintCallable)
+	void AttackCheck();
 };
 	
