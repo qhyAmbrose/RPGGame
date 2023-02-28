@@ -67,6 +67,8 @@ void AMyAICharacter::OnPawnSeen(APawn* Pawn)
 	//DrawDebugString(GetWorld(), GetActorLocation(), "PLAYER SPOTTED", nullptr, FColor::White, 0.5f, true);
 }
 
+
+
 void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth, float Delta)
 {
 	if (Delta < 0.0f)
@@ -125,7 +127,10 @@ void AMyAICharacter::AfterGetHit()
 	GetCharacterMovement()->ResetMoveState();
 	bIsNotHit=true;
 }
-
+void AMyAICharacter::AttackEnd()
+{
+	StopAnimMontage(AttackAnim);
+}
 
 void AMyAICharacter::SetTargetActor(AActor* NewTarget)
 {

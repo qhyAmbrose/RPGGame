@@ -75,6 +75,10 @@ protected:
 	UFUNCTION(NetMulticast, Unreliable)
 	void MulticastPawnSeen();
 
+	UFUNCTION()
+	void AttackEnd();
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* AttackAnim;
 	
 };
 	

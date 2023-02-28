@@ -197,7 +197,7 @@ void AMyCharacter::AttackCheck()
 		SpawnParams.Instigator = this;
 
 		FCollisionShape Shape;
-		Shape.SetSphere(20);
+		Shape.SetSphere(30);
 
 		// Ignore Player
 		FCollisionQueryParams Params;
@@ -209,7 +209,7 @@ void AMyCharacter::AttackCheck()
 		FVector TraceStart =HandLocation;
 		// endpoint far into the look-at distance (not too far, still adjust somewhat towards crosshair on a miss)
 		//端点距离观察距离较远（不太远，在未命中时仍朝十字准线方向调整）
-		FVector TraceEnd = TraceStart + (this->GetControlRotation().Vector() * 20);
+		FVector TraceEnd = TraceStart + (this->GetControlRotation().Vector() * 50);
 		FHitResult Hit;
 		
 		// returns true if we got to a blocking hit
@@ -242,7 +242,7 @@ void AMyCharacter::AttackCheck()
 		/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
 		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
 		*/
-		DrawDebugSphere(GetWorld(),TraceEnd,20.f,8,FColor::Green,false,1);
+		DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);
 		
 			
 }
