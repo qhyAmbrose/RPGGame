@@ -51,6 +51,8 @@ EBTNodeResult::Type UMyBTTask_RangedAttack::ExecuteTask(UBehaviorTreeComponent& 
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 		Params.Instigator = MyPawn;
 
+		//播放开枪动画
+		MyPawn->PlayAnimMontage(AttackAnim);
 		AActor* NewProj = GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation, MuzzleRotation, Params);
 
 		//如果生成投射物返回Succeeded
