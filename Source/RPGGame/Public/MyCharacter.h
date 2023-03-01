@@ -69,12 +69,20 @@ protected:
 
 	void MeleeAttack01Begin();
 
+	void GetInput();
+
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
 
 	UFUNCTION(BlueprintCallable)
 	void AttackCheck();
-
+	
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UUserWidget* MainHUD;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* GetHitAnim;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* DieMontage;
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
 	bool bAttacking;

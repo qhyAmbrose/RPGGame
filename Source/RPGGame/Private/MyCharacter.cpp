@@ -168,6 +168,8 @@ void AMyCharacter::MeleeAttack01Begin()
 	}
 }
 
+
+
 //每个蒙太奇片段结束后的动画通知都会调用的函数
 void AMyCharacter::AttackEnd()
 {
@@ -242,7 +244,7 @@ void AMyCharacter::AttackCheck()
 		/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
 		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
 		*/
-		DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);
+		/*DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);*/
 		
 			
 }
@@ -251,8 +253,13 @@ void AMyCharacter::AttackCheck()
 void AMyCharacter::HealthChange(float Amount)
 {
 	AttributeComp->ApplyHealthChange(this, Amount);
+	
 }
-
+void AMyCharacter::GetInput()
+{
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	EnableInput(PC);
+}
 float AMyCharacter::GetHitReactionAngle()
 {
 	return HitReactionAngle;
@@ -266,6 +273,13 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 	{
 		GetMesh()->SetScalarParameterValueOnMaterials(TimeToHitParamName, GetWorld()->TimeSeconds);
 
+		//播放受击动画蒙太奇
+		PlayAnimMontage(GetHitAnim);
+		APlayerController* PC = Cast<APlayerController>(GetController());
+		DisableInput(PC);
+		FTimerHandle TimerHandle_GetHit;
+		GetWorldTimerManager().SetTimer(TimerHandle_GetHit, this,&AMyCharacter::GetInput, 0.8f, false);
+		
 		//防止重复生成
 		/*if(ActiveHealthBar==nullptr)
 		{
@@ -289,7 +303,9 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 		APlayerController* PC = Cast<APlayerController>(GetController());
 		DisableInput(PC);
 
-		SetLifeSpan(5.0f);
+		PlayAnimMontage(DieMontage);
+		CreateWidget(MainHUD);
+		SetLifeSpan(1.6f);
 	}
 }
 
