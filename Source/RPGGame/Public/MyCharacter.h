@@ -94,6 +94,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	FName RightHandSocketName;
 
+
+	
 	//该类可以被编写为摄像机的振荡振动或动画振动
 	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
 	TSubclassOf<UCameraShakeBase> ImpactShake;
@@ -120,7 +122,11 @@ protected:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Attack")
 	float HitReactionAngle;
-	
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bIsSprinting;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bIsGetHit;
 	AMyCharacter();
 
 	// Called to bind functionality to input

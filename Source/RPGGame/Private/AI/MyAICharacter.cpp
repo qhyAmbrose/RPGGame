@@ -122,7 +122,7 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 			UE_LOG(LogTemp,Warning,TEXT("OtherActor:%s"),this->GetActorScale());
 			*/
 			GetCharacterMovement()->StopMovementImmediately();
-			GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, 0.2f, false);
+			GetWorldTimerManager().SetTimer(TimerHandle_GetHitDelay, this, &AMyAICharacter::AfterGetHit, 0.5f, false);
 		}
 	}
 }

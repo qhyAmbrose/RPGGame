@@ -93,11 +93,13 @@ void AMyCharacter::MoveRight(float Value)
 void AMyCharacter::SprintStart()
 {
 	ActionComp->StartActionByName(this,"Sprint");
+	bIsSprinting=true;
 }
 
 void AMyCharacter::SprintStop()
 {
 	ActionComp->StopActionByName(this,"Sprint");
+	bIsSprinting=false;
 }
 
 void AMyCharacter::PrimaryAttack()
@@ -135,9 +137,6 @@ void AMyCharacter::PrimaryInteract()
 
 void AMyCharacter::MeleeAttack01Begin()
 {
-	//主要是完成标签的工作
-	ActionComp->StartActionByName(this,"MeleeAttack01");
-	
 	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
 	//如果收招则从第一招开始打，并设置为连击状态
 	if(!bAttacking)
@@ -166,6 +165,8 @@ void AMyCharacter::MeleeAttack01Begin()
 			Instance->Montage_JumpToSection("MeleeAttack_A");
 			break;
 	}
+	//主要是完成标签的工作
+	ActionComp->StartActionByName(this,"MeleeAttack01");
 }
 
 
@@ -173,11 +174,12 @@ void AMyCharacter::MeleeAttack01Begin()
 //每个蒙太奇片段结束后的动画通知都会调用的函数
 void AMyCharacter::AttackEnd()
 {
+	//移除标签
+	ActionComp->StopActionByName(this,"MeleeAttack01");
 	//收招并设置为非连击状态
 	bAttacking = false;
 	StopAnimMontage(AttackAnim);
-	//移除标签
-	ActionComp->StopActionByName(this,"MeleeAttack01");
+	
 }
 //查询近战攻击目标并应用伤害
 void AMyCharacter::AttackCheck()
@@ -253,13 +255,12 @@ void AMyCharacter::AttackCheck()
 void AMyCharacter::HealthChange(float Amount)
 {
 	AttributeComp->ApplyHealthChange(this, Amount);
-	
 }
-void AMyCharacter::GetInput()
+/*void AMyCharacter::GetInput()
 {
 	APlayerController* PC = Cast<APlayerController>(GetController());
 	EnableInput(PC);
-}
+}*/
 float AMyCharacter::GetHitReactionAngle()
 {
 	return HitReactionAngle;
@@ -273,12 +274,12 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 	{
 		GetMesh()->SetScalarParameterValueOnMaterials(TimeToHitParamName, GetWorld()->TimeSeconds);
 
-		//播放受击动画蒙太奇
+		/*//播放受击动画蒙太奇
 		PlayAnimMontage(GetHitAnim);
 		APlayerController* PC = Cast<APlayerController>(GetController());
 		DisableInput(PC);
 		FTimerHandle TimerHandle_GetHit;
-		GetWorldTimerManager().SetTimer(TimerHandle_GetHit, this,&AMyCharacter::GetInput, 0.8f, false);
+		GetWorldTimerManager().SetTimer(TimerHandle_GetHit, this,&AMyCharacter::GetInput, 0.4f, false);*/
 		
 		//防止重复生成
 		/*if(ActiveHealthBar==nullptr)
@@ -304,7 +305,6 @@ void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponen
 		DisableInput(PC);
 
 		PlayAnimMontage(DieMontage);
-		CreateWidget(MainHUD);
 		SetLifeSpan(1.6f);
 	}
 }
