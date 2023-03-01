@@ -7,13 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP/BSP_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP/BSP_Walk.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/MinionRanged_AnimBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/MinionRanged_AnimBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP/Minion_Core_HitReact.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/BSP/Minion_Core_HitReact.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +234,7 @@
       <workItem from="1677385843488" duration="17378000" />
       <workItem from="1677475843144" duration="18635000" />
       <workItem from="1677562837236" duration="13933000" />
-      <workItem from="1677643883910" duration="7790000" />
+      <workItem from="1677643883910" duration="9051000" />
     </task>
     <servers />
   </component>
