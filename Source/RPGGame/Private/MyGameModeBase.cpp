@@ -128,7 +128,7 @@ void AMyGameModeBase::SpawnBotTimerElapsed()
 		return;
 	}
 
-	LogOnScreen(this, FString::Printf(TEXT("Available SpawnCredits: %f"), AvailableSpawnCredit));
+	/*LogOnScreen(this, FString::Printf(TEXT("Available SpawnCredits: %f"), AvailableSpawnCredit));*/
 
 	// Count alive bots before spawning
 	int32 NrOfAliveBots = 0;
@@ -241,7 +241,19 @@ void AMyGameModeBase::OnMonsterLoaded(FPrimaryAssetId LoadedId, FVector SpawnLoc
 		UMyPrimaryDataAsset_Monster* MonsterData = Cast<UMyPrimaryDataAsset_Monster>(Manager->GetPrimaryAssetObject(LoadedId));
 		if (MonsterData)
 		{
-			AActor* NewBot = GetWorld()->SpawnActor<AActor>(MonsterData->MonsterClass, SpawnLocation, FRotator::ZeroRotator);
+			//随机生成三种不同的怪物
+			AActor* NewBot;
+			switch (FMath::RandRange(0,2)){
+			case 0:
+				NewBot = GetWorld()->SpawnActor<AActor>(MonsterData->MonsterClass_Minion, SpawnLocation, FRotator::ZeroRotator);
+				break;
+			case 1:
+				NewBot = GetWorld()->SpawnActor<AActor>(MonsterData->MonsterClass_MinionElite, SpawnLocation, FRotator::ZeroRotator);
+				break;
+			default:
+				NewBot = GetWorld()->SpawnActor<AActor>(MonsterData->MonsterClass_Zombie, SpawnLocation, FRotator::ZeroRotator);
+				break;
+			}
 			if (NewBot)
 			{
 				LogOnScreen(this, FString::Printf(TEXT("Spawned enemy: %s (%s)"), *GetNameSafe(NewBot), *GetNameSafe(MonsterData)));

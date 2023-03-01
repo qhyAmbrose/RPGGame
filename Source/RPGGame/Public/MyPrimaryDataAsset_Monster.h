@@ -17,7 +17,11 @@ class RPGGAME_API UMyPrimaryDataAsset_Monster : public UPrimaryDataAsset
 public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Spawn Info")
-	TSubclassOf<AActor> MonsterClass;
+	TSubclassOf<AActor> MonsterClass_Minion;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Spawn Info")
+	TSubclassOf<AActor> MonsterClass_MinionElite;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Spawn Info")
+	TSubclassOf<AActor> MonsterClass_Zombie;
 
 	/* Actions/buffs to grant this Monster */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Spawn Info")
