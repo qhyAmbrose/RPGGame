@@ -226,7 +226,7 @@ void AMyAICharacter::AttackCheck()
 		/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
 		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);
 		*/
-		DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);
+		/*DrawDebugSphere(GetWorld(),TraceEnd,30.f,8,FColor::Green,false,1);*/
 		
 			
 }

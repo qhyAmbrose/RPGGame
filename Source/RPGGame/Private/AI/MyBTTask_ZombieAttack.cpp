@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MyBTTask_ZombieAttack.h"
+#include "AI/MyBTTask_ZombieAttack.h"
 
 #include "AIController.h"
 #include "MyAttributeComponent.h"
@@ -56,24 +56,6 @@ EBTNodeResult::Type UMyBTTask_ZombieAttack::ExecuteTask(UBehaviorTreeComponent& 
 			Instance->Montage_JumpToSection("MeleeAttack_C");
 			break;
 		}
-		//射线检测是否打到
-		
-		/*//通过AIController获得AIPawn身上的骨骼位置，以及投射物发射方向
-		FVector MuzzleLocation = MyPawn->GetMesh()->GetSocketLocation("gun_foregrip");
-		FVector Direction = TargetActor->GetActorLocation() - MuzzleLocation;
-		FRotator MuzzleRotation = Direction.Rotation();
-
-		// Ignore negative pitch to not hit the floor in front itself
-		MuzzleRotation.Pitch += FMath::RandRange(0.0f, MaxBulletSpread);
-		MuzzleRotation.Yaw += FMath::RandRange(-MaxBulletSpread, MaxBulletSpread);
-
-		FActorSpawnParameters Params;
-		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-		Params.Instigator = MyPawn;
-
-		//播放开枪动画
-		MyPawn->PlayAnimMontage(AttackAnim);
-		AActor* NewProj = GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation, MuzzleRotation, Params);*/
 
 		//如果 返回Succeeded
 		return Instance ? EBTNodeResult::Succeeded : EBTNodeResult::Failed;
