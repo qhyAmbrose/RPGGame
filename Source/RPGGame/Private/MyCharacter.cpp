@@ -371,6 +371,12 @@ FVector AMyCharacter::GetPawnViewLocation() const
 	return CameraComp->GetComponentLocation();
 }
 
+void AMyCharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	UGameplayStatics::PlayWorldCameraShake(this,CameraShake_Land,GetActorLocation(),400,2000);
+}
+
 
 
 

@@ -7,17 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/AI/QueryContext_TargetActor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/GameModeBP.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyActionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyActionComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyAttributeComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyAttributeComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyGameModeBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +258,8 @@
       <workItem from="1682429305296" duration="870000" />
       <workItem from="1682745695722" duration="3049000" />
       <workItem from="1683034265885" duration="670000" />
-      <workItem from="1683115278714" duration="743000" />
+      <workItem from="1683115278714" duration="2227000" />
+      <workItem from="1683123206212" duration="368000" />
     </task>
     <servers />
   </component>

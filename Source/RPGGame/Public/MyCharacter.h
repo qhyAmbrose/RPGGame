@@ -106,6 +106,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
 	TSubclassOf<UCameraShakeBase> ImpactShake;
 
+	//落地相机振动
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Effects|Shake")
+	TSubclassOf<UCameraShakeBase> CameraShake_Land;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
 	float ImpactShakeInnerRadius;
 
@@ -124,6 +128,8 @@ protected:
 	virtual void PostInitializeComponents() override;
 
 	virtual FVector GetPawnViewLocation() const override;
+	//继承落地函数
+	virtual void Landed(const FHitResult& Hit);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Attack")
@@ -147,4 +153,5 @@ public:
 	float GetHitReactionAngle();
 	FTimerHandle TimerHandle_RemoteAttackDelay;
 
+	
 };
