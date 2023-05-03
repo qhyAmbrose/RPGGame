@@ -69,6 +69,10 @@ protected:
 
 	void MeleeAttack01Begin();
 
+	void RemoteAttackStart();
+	void RemoteAttackStop();
+	void AfterRemoteAttack();
+	
 	void GetInput();
 
 	UFUNCTION(BlueprintCallable)
@@ -85,6 +89,8 @@ protected:
 	UAnimMontage* DieMontage;
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* RemoteAttackAnim;
 	bool bAttacking;
 	TArray<FString> StringTArray;
 	int32 Index;
@@ -124,6 +130,8 @@ public:
 	float HitReactionAngle;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bIsRemoteAttacking;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool bIsSprinting;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool bIsGetHit;
@@ -137,5 +145,6 @@ public:
 
 	UFUNCTION()
 	float GetHitReactionAngle();
-	
+	FTimerHandle TimerHandle_RemoteAttackDelay;
+
 };

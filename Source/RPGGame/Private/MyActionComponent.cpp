@@ -178,12 +178,10 @@ void UMyActionComponent::ServerStartAction_Implementation(AActor* Instigator, FN
 	StartActionByName(Instigator, ActionName);
 }
 
-
 void UMyActionComponent::ServerStopAction_Implementation(AActor* Instigator, FName ActionName)
 {
 	StopActionByName(Instigator, ActionName);
 }
-
 
 bool UMyActionComponent::ReplicateSubobjects(class UActorChannel* Channel, class FOutBunch* Bunch, FReplicationFlags* RepFlags)
 {
@@ -198,7 +196,6 @@ bool UMyActionComponent::ReplicateSubobjects(class UActorChannel* Channel, class
 
 	return WroteSomething;
 }
-
 
 void UMyActionComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {

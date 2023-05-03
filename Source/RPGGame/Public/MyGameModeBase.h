@@ -86,6 +86,7 @@ protected:
 
 	FTimerHandle TimerHandle_SpawnBots;
 
+	//怪物生成的时间间隔
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 	float SpawnTimerInterval;
 

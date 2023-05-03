@@ -31,14 +31,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Attributes")
 	float HealthMax;
-
-	
-
 	
 	UFUNCTION(NetMulticast, Reliable) // @note: could mark as unreliable once we moved the 'state' out of scharacter (eg. once its cosmetic only)
 	void MulticastHealthChanged(AActor* InstigatorActor, float NewHealth, float Delta);
-
-	
 
 public:	
 
@@ -62,6 +57,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Attributes")
 	bool ApplyHealthChange(AActor* InstigatorActor, float Delta);
-
-	
 };

@@ -37,6 +37,9 @@ AMyCharacter::AMyCharacter()
 
 	ImpactShakeInnerRadius = 0.0f;
 	ImpactShakeOuterRadius = 1500.0f;
+
+	//子弹时间
+	//this->CustomTimeDilation=0.1;
 }
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -62,6 +65,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Dash",IE_Pressed,this,&AMyCharacter::Dash);
 
 	PlayerInputComponent->BindAction("MeleeAttack01",IE_Pressed,this,&AMyCharacter::MeleeAttack01Begin);
+	PlayerInputComponent->BindAction("RemoteAttack",IE_Pressed,this,&AMyCharacter::RemoteAttackStart);
+	PlayerInputComponent->BindAction("RemoteAttack",IE_Released,this,&AMyCharacter::RemoteAttackStop);
 	
 }
 
@@ -94,12 +99,16 @@ void AMyCharacter::SprintStart()
 {
 	ActionComp->StartActionByName(this,"Sprint");
 	bIsSprinting=true;
+	//关闭摄像机延迟跟随
+	SpringArmComp->bEnableCameraLag=false;
 }
 
 void AMyCharacter::SprintStop()
 {
 	ActionComp->StopActionByName(this,"Sprint");
 	bIsSprinting=false;
+	//开启摄像机延迟跟随
+	SpringArmComp->bEnableCameraLag=true;
 }
 
 void AMyCharacter::PrimaryAttack()
@@ -165,10 +174,46 @@ void AMyCharacter::MeleeAttack01Begin()
 			Instance->Montage_JumpToSection("MeleeAttack_A");
 			break;
 	}
+	//生成围绕玩家旋转的远程武器
+	//GetWorld()->SpawnActor<AActor>(ProjectileClass,HandLocation,ProjRotation,SpawnParams);
 	//主要是完成标签的工作
 	ActionComp->StartActionByName(this,"MeleeAttack01");
 }
 
+void AMyCharacter::RemoteAttackStart()
+{
+	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
+	Instance->Montage_Play(RemoteAttackAnim,0.5);
+	//用Timehandle做一个回调函数
+	GetWorldTimerManager().SetTimer(TimerHandle_RemoteAttackDelay,this,&AMyCharacter::AfterRemoteAttack,0.66f,false);
+	
+	//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Start");
+	/*ActionComp->StartActionByName(this,"RemoteAttack");
+	bIsRemoteAttacking=true;*/
+	
+}
+
+void AMyCharacter::RemoteAttackStop()
+{
+	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Black,"Stop");
+	//播放第二段动画
+	//释放投射物
+	ActionComp->StartActionByName(this, "PrimaryAttack");
+
+	//将是否蓄力完的变量设置为False
+	bIsRemoteAttacking=false;
+	/*ActionComp->StopActionByName(this,"RemoteAttack");
+	bIsRemoteAttacking=false;*/
+}
+
+void AMyCharacter::AfterRemoteAttack()
+{
+	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Black,"Callback");
+	//设置移动速度以及转向速度
+	//蒙太奇播放完后将蓄力完变量设置为true(在状态机中维持该endingpose）
+	bIsRemoteAttacking=true;
+	//生成粒子特效
+}
 
 
 //每个蒙太奇片段结束后的动画通知都会调用的函数
