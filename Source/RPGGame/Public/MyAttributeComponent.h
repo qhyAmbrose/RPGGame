@@ -8,7 +8,8 @@
 #include "MyAttributeComponent.generated.h"
 
 //动态多播委托
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FOnAttributeChanged, AActor*, InstigatorActor, UMyAttributeComponent*, OwningComp, float, NewValue, float, Delta);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FOnAttributeChanged, AActor*, InstigatorActor, UMyAttributeComponent*,
+	OwningComp, float, NewValue, float, Delta);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class RPGGAME_API UMyAttributeComponent : public UActorComponent

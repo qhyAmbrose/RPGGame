@@ -23,6 +23,8 @@ class RPGGAME_API AMyCharacter : public ACharacter
 	GENERATED_BODY()
 
 protected:
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	TSubclassOf<AActor> ProjectileClass;
 	UPROPERTY(VisibleAnywhere, Category = "Effects")
 	FName TimeToHitParamName;
 	
@@ -71,8 +73,19 @@ protected:
 
 	void RemoteAttackStart();
 	void RemoteAttackStop();
-	void AfterRemoteAttack();
-	
+	void AfterRemoteAttack(UAnimMontage* montage,bool bInterrupted);
+	void RemoteAttackProjectile();
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float BlendTime;
+
+	bool bIsBlend;
+	FTimerHandle TimerHandle_RemoteAttackDelay_A;
+	FTimerHandle TimerHandle_RemoteAttackDelay_B;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* RemoteAttackAnim_A;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* RemoteAttackAnim_B;
 	void GetInput();
 
 	UFUNCTION(BlueprintCallable)
@@ -100,8 +113,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	FName RightHandSocketName;
 
-
-	
+	//当前冲刺摄像机振动
+	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
+	UCameraShakeBase* CurrentSprintShake=nullptr;
 	//该类可以被编写为摄像机的振荡振动或动画振动
 	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
 	TSubclassOf<UCameraShakeBase> ImpactShake;
@@ -109,6 +123,10 @@ protected:
 	//落地相机振动
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Effects|Shake")
 	TSubclassOf<UCameraShakeBase> CameraShake_Land;
+
+	//冲刺振动
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category="Effects|Shake")
+	TSubclassOf<UCameraShakeBase> CameraShake_Sprint;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects|Shake")
 	float ImpactShakeInnerRadius;
@@ -146,8 +164,17 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION(Exec)
-	void HealthChange(float Amount = 100);
+	virtual  void Tick(float DeltaSeconds) override;
+	/* Particle System played during attack animation */
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UParticleSystem* CastingEffect;
+
+	/* Sound Effect to play (Can be Wave or Cue) */
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	USoundBase* CastingSound;
+
+	/*UFUNCTION(Exec)
+	void HealthChange(float Amount = 100);*/
 
 	UFUNCTION()
 	float GetHitReactionAngle();

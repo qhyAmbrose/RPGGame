@@ -408,7 +408,7 @@ void AMyGameModeBase::WriteSaveGame()
 		AActor* Actor = *It;
 		// Only interested in our 'gameplay actors', skip actors that are being destroyed
 		// Note: You might instead use a dedicated SavableObject interface for Actors you want to save instead of re-using GameplayInterface
-		if (Actor->IsPendingKill() || !Actor->Implements<UMyGamePlayInterface>())
+		if (IsValid(Actor) || !Actor->Implements<UMyGamePlayInterface>())
 		{
 			continue;
 		}

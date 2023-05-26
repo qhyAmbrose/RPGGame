@@ -4,8 +4,11 @@
 #include "MyCharacter.h"
 
 #include "MyGameplayFunctionLibrary.h"
+#include "TimerManager.h"
 #include "AI/MyAICharacter.h"
 #include "Blueprint/UserWidget.h"
+#include "Camera/CameraShakeBase.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -40,6 +43,8 @@ AMyCharacter::AMyCharacter()
 
 	//子弹时间
 	//this->CustomTimeDilation=0.1;
+	bIsBlend=false;
+	BlendTime=1.0f;
 }
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -68,6 +73,20 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("RemoteAttack",IE_Pressed,this,&AMyCharacter::RemoteAttackStart);
 	PlayerInputComponent->BindAction("RemoteAttack",IE_Released,this,&AMyCharacter::RemoteAttackStop);
 	
+}
+
+void AMyCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	//更改蓄力镜头的远近
+	if(bIsBlend&&CameraComp->FieldOfView>70)
+	{
+		CameraComp->FieldOfView-=DeltaSeconds*BlendTime;
+	}
+	if(!bIsBlend&&CameraComp->FieldOfView<90)
+	{
+		CameraComp->FieldOfView+=DeltaSeconds*BlendTime*3;
+	}
 }
 
 
@@ -101,6 +120,10 @@ void AMyCharacter::SprintStart()
 	bIsSprinting=true;
 	//关闭摄像机延迟跟随
 	SpringArmComp->bEnableCameraLag=false;
+	if(CameraShake_Sprint)
+	{
+		CurrentSprintShake = GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(CameraShake_Sprint,1);
+	}
 }
 
 void AMyCharacter::SprintStop()
@@ -109,6 +132,11 @@ void AMyCharacter::SprintStop()
 	bIsSprinting=false;
 	//开启摄像机延迟跟随
 	SpringArmComp->bEnableCameraLag=true;
+	if(CurrentSprintShake)
+	{
+		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StopCameraShake(CurrentSprintShake,true);
+		CurrentSprintShake=nullptr;
+	}
 }
 
 void AMyCharacter::PrimaryAttack()
@@ -183,39 +211,108 @@ void AMyCharacter::MeleeAttack01Begin()
 void AMyCharacter::RemoteAttackStart()
 {
 	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
-	Instance->Montage_Play(RemoteAttackAnim,0.5);
-	//用Timehandle做一个回调函数
-	GetWorldTimerManager().SetTimer(TimerHandle_RemoteAttackDelay,this,&AMyCharacter::AfterRemoteAttack,0.66f,false);
+	Instance->Montage_Play(RemoteAttackAnim_A,0.5);
+	//在手上播放粒子特效
+	UGameplayStatics::SpawnEmitterAttached(CastingEffect, this->GetMesh(), RightHandSocketName, FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::SnapToTarget);
 	
-	//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Start");
+	UGameplayStatics::SpawnSoundAttached(CastingSound, this->GetMesh());
+
+	//回调
+	FOnMontageEnded EndMontageDelegate;
+	EndMontageDelegate.BindUObject(this,&AMyCharacter::AfterRemoteAttack);
+	Instance->Montage_SetEndDelegate(EndMontageDelegate);
+	//用Timehandle做一个回调函数
+	//GetWorldTimerManager().SetTimer(TimerHandle_RemoteAttackDelay_A,this,&AMyCharacter::AfterRemoteAttack,0.6f,false);
+	
+	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Start");
 	/*ActionComp->StartActionByName(this,"RemoteAttack");
 	bIsRemoteAttacking=true;*/
 	
+	bIsBlend=true;
+	//摄像机镜头晃动
+	//UGameplayStatics::PlayWorldCameraShake(this, ImpactShake, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);
+	//控制镜头焦距缓慢拉向越肩视角
+	//CameraComp->FieldOfView=70.0f;
 }
-
-void AMyCharacter::RemoteAttackStop()
-{
-	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Black,"Stop");
-	//播放第二段动画
-	//释放投射物
-	ActionComp->StartActionByName(this, "PrimaryAttack");
-
-	//将是否蓄力完的变量设置为False
-	bIsRemoteAttacking=false;
-	/*ActionComp->StopActionByName(this,"RemoteAttack");
-	bIsRemoteAttacking=false;*/
-}
-
-void AMyCharacter::AfterRemoteAttack()
+void AMyCharacter::AfterRemoteAttack(UAnimMontage* montage,bool bInterrupted)
 {
 	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Black,"Callback");
 	//设置移动速度以及转向速度
 	//蒙太奇播放完后将蓄力完变量设置为true(在状态机中维持该endingpose）
 	bIsRemoteAttacking=true;
-	//生成粒子特效
+	
+}
+void AMyCharacter::RemoteAttackStop()
+{
+	//结束粒子特效
+	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Black,"Stop");
+	//播放第二段动画
+	UAnimInstance* Instance = GetMesh()->GetAnimInstance();
+	Instance->Montage_Play(RemoteAttackAnim_B,1);
+	//释放投射物
+	//ActionComp->StartActionByName(this, "PrimaryAttack");
+	//用Timehandle做一个回调函数
+	
+	GetWorldTimerManager().SetTimer(TimerHandle_RemoteAttackDelay_B,this,&AMyCharacter::RemoteAttackProjectile,0.43f,false);
+	bIsBlend=false;
+	//将是否蓄力完的变量设置为False
+	bIsRemoteAttacking=false;
+	/*ActionComp->StopActionByName(this,"RemoteAttack");
+	bIsRemoteAttacking=false;*/
+
+	//CameraComp->FieldOfView=90;
 }
 
 
+
+void AMyCharacter::RemoteAttackProjectile()
+{
+	FVector HandLocation = this->GetMesh()->GetSocketLocation(RightHandSocketName);
+
+	//①得到SpawnParams
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; 
+	SpawnParams.Instigator = this;
+
+	FCollisionShape Shape;
+	Shape.SetSphere(20.0f);
+
+	// Ignore Player
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+
+	FCollisionObjectQueryParams ObjParams;
+	ObjParams.AddObjectTypesToQuery(ECC_WorldDynamic);
+	ObjParams.AddObjectTypesToQuery(ECC_WorldStatic);
+	ObjParams.AddObjectTypesToQuery(ECC_Pawn);
+
+	//②得到SpawnTM
+	//  计算ProjRotation
+		
+	FVector TraceStart = this->GetPawnViewLocation();
+	// endpoint far into the look-at distance (not too far, still adjust somewhat towards crosshair on a miss)
+	//端点距离观察距离较远（不太远，在未命中时仍朝十字准线方向调整）
+	FVector TraceEnd = TraceStart + (this->GetControlRotation().Vector() * 5000);
+	FHitResult Hit;
+	// returns true if we got to a blocking hit
+	if (GetWorld()->SweepSingleByObjectType(Hit, TraceStart, TraceEnd, FQuat::Identity, ObjParams, Shape, Params))
+	{
+		// Overwrite trace end with impact point in world
+		TraceEnd = Hit.ImpactPoint;
+	}
+	// 发射角度。find new direction/rotation from Hand pointing to impact point in world.
+	FRotator ProjRotation = FRotationMatrix::MakeFromX(TraceEnd - HandLocation).Rotator();
+		
+	/*FString ProjRotationMsg = FString::Printf(TEXT("ProjRotationMsg: %s"), *ProjRotation.ToString());
+	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);*/
+	GetWorld()->SpawnActor<AActor>(ProjectileClass,HandLocation,ProjRotation,SpawnParams);
+	
+
+	/*//摄像机镜头晃动
+	UGameplayStatics::PlayWorldCameraShake(this, ImpactShake_Projectile, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);
+	*/
+	
+}
 //每个蒙太奇片段结束后的动画通知都会调用的函数
 void AMyCharacter::AttackEnd()
 {
@@ -297,10 +394,11 @@ void AMyCharacter::AttackCheck()
 }
 
 //对玩家造成伤害/治愈
-void AMyCharacter::HealthChange(float Amount)
+/*void AMyCharacter::HealthChange(float Amount)
 {
+	//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"DynamicDecalre!!!!!!!!!!!");
 	AttributeComp->ApplyHealthChange(this, Amount);
-}
+}*/
 /*void AMyCharacter::GetInput()
 {
 	APlayerController* PC = Cast<APlayerController>(GetController());
@@ -311,9 +409,10 @@ float AMyCharacter::GetHitReactionAngle()
 	return HitReactionAngle;
 }
 
-//应用伤害/治愈的最后一步
+//应用伤害/治愈的最后一步（动态多播，主要是该委托在AI中也同时生效）
 void AMyCharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeComponent* OwningComp, float NewHealth,float Delta)
 {
+	//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"DynamicDecalre!!!!!!!!!!!");
 	// Damaged
 	if (Delta < 0.0f)
 	{

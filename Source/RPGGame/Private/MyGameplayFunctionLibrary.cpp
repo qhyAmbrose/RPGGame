@@ -29,7 +29,8 @@ bool UMyGameplayFunctionLibrary::ApplyDirectionalDamage(AActor* DamageCauser, AA
 			FVector Direction = HitResult.TraceEnd - HitResult.TraceStart;
 			Direction.Normalize();
 
-			HitComp->AddImpulseAtLocation(Direction * 300000.f, HitResult.ImpactPoint, HitResult.BoneName);
+			//将敌人死亡的尸体打飞
+			HitComp->AddImpulseAtLocation(Direction * 3000.f, HitResult.ImpactPoint, HitResult.BoneName);
 		}
 		return true;
 	}

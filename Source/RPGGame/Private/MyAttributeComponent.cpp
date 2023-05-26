@@ -73,7 +73,7 @@ bool UMyAttributeComponent::ApplyHealthChange(AActor* InstigatorActor, float Del
 
 		if (ActualDelta != 0.0f)
 		{
-			//在Server和所有Clients上应用数据的变化
+			//在Server和所有Clients上广播（主要是处理死亡以及其他状态（血条的显示）的改变，并不会广播血量的数值）
 			MulticastHealthChanged(InstigatorActor, Health, ActualDelta);
 		}
 
@@ -88,6 +88,7 @@ bool UMyAttributeComponent::ApplyHealthChange(AActor* InstigatorActor, float Del
 		}
 	}
 
+	//如果死亡，返回true
 	return ActualDelta != 0;
 }
 

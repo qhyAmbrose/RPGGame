@@ -75,6 +75,7 @@ void AMyAICharacter::OnHealthChanged(AActor* InstigatorActor, UMyAttributeCompon
 {
 	if (Delta < 0.0f)
 	{
+		//转向敌人（玩家）的方向
 		if (InstigatorActor != this)
 		{
 			SetTargetActor(InstigatorActor);
