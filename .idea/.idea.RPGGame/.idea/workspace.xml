@@ -7,22 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="33c75f25-698c-444d-aa55-264dabc9853a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPGGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/RemoteAttack01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/RemoteAttack01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/RemoteAttack02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/Attack/RemoteAttack02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/CameraShake/BP_CameraShakeLand.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/CameraShake/BP_CameraShakeLand.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/RPGGame/CameraShake/DefaultCameraShake.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GKnight/Meshes/SK_GothicKnight_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/RPGGame/Animation/SK_GothicKnight_Skeleton_Sequence.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Animation/SK_GothicKnight_Skeleton_Sequence.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/Level/World0.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/RPGGame/PlayerAnimBP02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPGGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/RPGGame.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/AI/MyAICharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyAttributeComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyAttributeComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameModeBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameplayFunctionLibrary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Private/MyGameplayFunctionLibrary.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyAttributeComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyAttributeComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/Public/MyCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/RPGGame/RPGGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/RPGGame/RPGGame.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +277,8 @@
       <workItem from="1684819691128" duration="713000" />
       <workItem from="1685016771336" duration="373000" />
       <workItem from="1685017180314" duration="1356000" />
-      <workItem from="1685080607752" duration="4302000" />
+      <workItem from="1685080607752" duration="5858000" />
+      <workItem from="1685166951763" duration="4241000" />
     </task>
     <servers />
   </component>

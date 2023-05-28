@@ -45,6 +45,8 @@ AMyCharacter::AMyCharacter()
 	//this->CustomTimeDilation=0.1;
 	bIsBlend=false;
 	BlendTime=1.0f;
+
+	bIsRemoteAttacking=false;
 }
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -257,13 +259,9 @@ void AMyCharacter::RemoteAttackStop()
 	bIsBlend=false;
 	//将是否蓄力完的变量设置为False
 	bIsRemoteAttacking=false;
-	/*ActionComp->StopActionByName(this,"RemoteAttack");
-	bIsRemoteAttacking=false;*/
 
 	//CameraComp->FieldOfView=90;
 }
-
-
 
 void AMyCharacter::RemoteAttackProjectile()
 {
@@ -307,7 +305,7 @@ void AMyCharacter::RemoteAttackProjectile()
 	GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,ProjRotationMsg);*/
 	GetWorld()->SpawnActor<AActor>(ProjectileClass,HandLocation,ProjRotation,SpawnParams);
 	
-
+	bIsRemoteAttacking=false;
 	/*//摄像机镜头晃动
 	UGameplayStatics::PlayWorldCameraShake(this, ImpactShake_Projectile, GetActorLocation(), ImpactShakeInnerRadius, ImpactShakeOuterRadius);
 	*/
