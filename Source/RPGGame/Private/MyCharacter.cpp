@@ -83,7 +83,7 @@ void AMyCharacter::Tick(float DeltaSeconds)
 	//更改蓄力镜头的远近
 	if(bIsBlend&&CameraComp->FieldOfView>70)
 	{
-		CameraComp->FieldOfView-=DeltaSeconds*BlendTime;
+		CameraComp->FieldOfView-=DeltaSeconds*BlendTime; 
 	}
 	if(!bIsBlend&&CameraComp->FieldOfView<90)
 	{
